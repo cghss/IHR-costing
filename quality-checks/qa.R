@@ -24,7 +24,7 @@ library(scales) ## for commas on axes of plots
 
 ## TODO: data dictionary for all data
 ## TODO: currently reading in private google sheets, when finalized save as flat file and move to data/
-## TODO: cost PPE
+## TODO: check/confirm WASH costs
 
 ## item cost data
 line_items <- read_sheet("https://docs.google.com/spreadsheets/d/1ZLGXzf1Dw77NiTV2bjrolKID-46PQEMR8HCCty_5OK8/edit#gid=0",
@@ -37,6 +37,9 @@ jee <- read_sheet("https://docs.google.com/spreadsheets/d/1AgSqLn0DL7utGPZ83kgjW
 ## info on unit costs
 unit_costs <- read_sheet("https://docs.google.com/spreadsheets/d/1rQUjW09QO-wXXbSMPL9xl7aYRJCPIvGkqz1R3RhyegE/edit#gid=0",
                          sheet = 1)
+
+unit_costs_grouped <- read_sheet("https://docs.google.com/spreadsheets/d/1rQUjW09QO-wXXbSMPL9xl7aYRJCPIvGkqz1R3RhyegE/edit#gid=0",
+                         sheet = 2)
 
 #############################################
 ## Clean/reformat data ######################
@@ -84,6 +87,16 @@ names(unit_costs) <- recode(names(unit_costs),
                             "Default cost value (USD 2022)" = "value",
                             "Cost unit" = "unit",
                             "Assumptions" = "assumptions",
+                            "URL" = "url")
+
+names(unit_costs_grouped) <- recode(names(unit_costs_grouped),
+                            "Cost name" = "cost_name",
+                            "Cost subcategory (if any)" = "cost_subcategory",
+                            "Item" = "item",
+                            "Units" = "unit",
+                            "Unit cost" = "unit cost",
+                            "Default cost value (USD 2022)" = "value",
+                            "Reference (example costed item)" = "reference",
                             "URL" = "url")
 
 #############################################
@@ -224,5 +237,13 @@ unit_costs %>%
   scale_fill_manual(values = c("#172869", "#088BBE", "#1BB6AF")) 
   # scale_x_log10(breaks = trans_breaks("log10", function(x) 10^x),
   #               labels = trans_format("log10", math_format(10^.x))) 
+
+#############################################
+## Calculate grouped unit costs #############
+#############################################
+
+unit_costs_grouped %>%
+  group_by(cost_name) %>%
+  summarize(total = sum(value))
 
 
