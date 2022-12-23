@@ -5,6 +5,8 @@
 ## This script contains checks used to perform data Q/A during the data 
 ## collection, management, and curation process
 
+## assume working directory is set to IHR-costing
+
 #############################################
 ## Setup ####################################
 #############################################
@@ -22,7 +24,6 @@ library(scales) ## for commas on axes of plots
 ## Read in data #############################
 #############################################
 
-## TODO: data dictionary for all data
 ## TODO: currently reading in private google sheets, when finalized save as flat file and move to data/
 ## TODO: check/confirm WASH costs
 
@@ -31,8 +32,7 @@ line_items <- read_sheet("https://docs.google.com/spreadsheets/d/1ZLGXzf1Dw77NiT
                         sheet = 1) ## read in first tab
 
 ## info on the JEE at the score/attribute level
-jee <- read_sheet("https://docs.google.com/spreadsheets/d/1AgSqLn0DL7utGPZ83kgjWl3OeFp0ctjL5BLY0FZufGY/edit#gid=0",
-                  sheet = 1)
+jee <- read.table("data/jee3.tsv", sep = "\t", header = TRUE)
 
 ## info on unit costs
 unit_costs <- read_sheet("https://docs.google.com/spreadsheets/d/1rQUjW09QO-wXXbSMPL9xl7aYRJCPIvGkqz1R3RhyegE/edit#gid=0",
@@ -41,6 +41,9 @@ unit_costs <- read_sheet("https://docs.google.com/spreadsheets/d/1rQUjW09QO-wXXb
 unit_costs_grouped <- read_sheet("https://docs.google.com/spreadsheets/d/1rQUjW09QO-wXXbSMPL9xl7aYRJCPIvGkqz1R3RhyegE/edit#gid=0",
                          sheet = 2)
 
+## read in info on countries
+countries <- read.table("data/countries.tsv", sep = "\t", header = TRUE)
+
 #############################################
 ## Clean/reformat data ######################
 #############################################
@@ -48,6 +51,7 @@ unit_costs_grouped <- read_sheet("https://docs.google.com/spreadsheets/d/1rQUjW0
 ## TODO: remove initials from line_items table (two fields)
 ## TODO: remove remaining items from the JEE table (one field)
 ## TODO: remove extra items from the unit costs table (two fields)
+## TODO: update data dictionary 
 
 ## make field names in line_item object more nicely machine readable
 ## standard: snake case ## https://en.wikipedia.org/wiki/Snake_case
@@ -60,8 +64,8 @@ names(line_items) <- recode(names(line_items),
        "Attribute" = "attribute",
        "Requirement" = "requirement",
        "Activity" = "activity",
-       "Unit cost name" = "unit_cost_name",
-       "Cost unit" = "cost_unit",
+       "Unit cost" = "unit_cost",
+       "Unit" = "unit",
        "Description" = "description",
        "Administrative level" = "administrative_level",
        "Cost type" = "cost_type",
@@ -73,18 +77,11 @@ names(line_items) <- recode(names(line_items),
        "Optional cost?" = "optional_cost",
        "Notes and additional assumptions" = "notes")
 
-names(jee) <- recode(names(jee),
-                     "Pillar" = "pillar",
-                     "Capacity" = "capacity",
-                     "Indicator" = "indicator",
-                     "Score" = "score",
-                     "Attribute" = "attribute")
-
 names(unit_costs) <- recode(names(unit_costs),
-                            "Cost name" = "cost_name",
+                            "Unit cost" = "unit_cost",
                             "Description" = "description",
                             "Category (Sloan et al)" = "category_sloan",
-                            "Default cost value (USD 2022)" = "value",
+                            "Default value (2022 USD)" = "value",
                             "Cost unit" = "unit",
                             "Assumptions" = "assumptions",
                             "URL" = "url")
@@ -93,9 +90,9 @@ names(unit_costs_grouped) <- recode(names(unit_costs_grouped),
                             "Cost name" = "cost_name",
                             "Cost subcategory (if any)" = "cost_subcategory",
                             "Item" = "item",
-                            "Units" = "unit",
+                            "Unit" = "unit",
                             "Unit cost" = "unit cost",
-                            "Default cost value (USD 2022)" = "value",
+                            "Default value (2022 USD)" = "value",
                             "Reference (example costed item)" = "reference",
                             "URL" = "url")
 
@@ -225,25 +222,66 @@ unit_costs %>%
   arrange(desc(value)) %>%
   top_n(30) %>%
   ggplot(aes(x = value, 
-             y = factor(cost_name, levels = rev(cost_name)),
+             y = factor(unit_cost, levels = rev(unit_cost)),
              fill = category_sloan)) + ## factor coercion keeps order specified in arrange, since I want the barplot sorted
   geom_bar(stat = "identity", color = "black") +
   xlab("Default Cost (2022 USD)") +
   ylab("") +
-  scale_x_continuous(label = comma) +
   labs(caption = "", fill = "Cost category") +
   theme_minimal() + 
   theme(plot.caption = element_text(size = 7), legend.position = "bottom") +
-  scale_fill_manual(values = c("#172869", "#088BBE", "#1BB6AF")) 
-  # scale_x_log10(breaks = trans_breaks("log10", function(x) 10^x),
-  #               labels = trans_format("log10", math_format(10^.x))) 
+  scale_fill_manual(values = c("#172869", "#088BBE", "#1BB6AF")) +
+  scale_x_log10(breaks = trans_breaks("log10", function(x) 10^x),
+                labels = trans_format("log10", math_format(10^.x))) +
+  ggtitle("Most expensive unit costs")
 
 #############################################
-## Calculate grouped unit costs #############
+## Explore which unit costs are used ########
+## the most times in line_item costs ########
 #############################################
+
+line_items %>%
+  left_join(unit_costs, by = "unit_cost") %>%
+  group_by(category_sloan, unit_cost) %>%
+  filter(complete.cases(category_sloan)) %>%
+  summarize(n = n()) %>%
+  arrange(desc(n)) %>%
+  top_n(30) %>%
+  ungroup() %>%
+  ggplot(aes(x = n, 
+             y = factor(unit_cost, levels = rev(unit_cost)),
+             fill = category_sloan)) + ## factor coercion keeps order specified in arrange, since I want the barplot sorted
+  geom_bar(stat = "identity", color = "black") +
+  xlab("Number of times unit is costed in line-items") +
+  ylab("") +
+  scale_x_continuous(label = comma) +
+  scale_fill_manual(values = c("#172869", "#088BBE", "#1BB6AF")) +
+  labs(caption = "", fill = "Cost category") +
+  theme_minimal() + 
+  theme(plot.caption = element_text(size = 7), legend.position = "bottom") +
+  ggtitle("Most frequently used line-item costs")
+
+#############################################
+## Explore costs for all items/attributes ###
+## for a selected country ###################
+#############################################
+
+a <- line_items %>%
+  left_join(unit_costs, by = "unit_cost") %>%
+  bind_cols(countries %>% filter(name == "United States")) %>%
+  mutate(administrative_level_multiplier = 
+         ifelse(administrative_level == "National", 1,
+         ifelse(administrative_level == "Intermediate", intermediate_area_count,
+    "error")))
+
+                                                  
+           
+ # mutate(y1cost = value*custom_multiplier_1*custom_multiplier_2*)
+
+#######################################################
+## Appendix: Calculate grouped unit costs #############
+#######################################################
 
 unit_costs_grouped %>%
-  group_by(cost_name) %>%
+  group_by(cost_name, category_sloan) %>%
   summarize(total = sum(value))
-
-
