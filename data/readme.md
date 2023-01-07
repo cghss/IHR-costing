@@ -16,13 +16,14 @@ This directory contains the underlying datasets that power the IHR costing tool.
 | line_items.tsv          | GHSS Research Team     |  23 December, 2022
 
 ### metrics.tsv
-This file contains information on the indicators and attributes associated with (1) the third edition of the [Joint External Evaluation Tool (JEE)](https://www.who.int/publications/i/item/9789240051980), published mid-year in 2022, and (2) the second edition of the [IHR State Party Self-Assessment Annual Report (SPAR)](https://www.who.int/emergencies/operations/international-health-regulations-monitoring-evaluation-framework/states-parties-self-assessment-annual-reporting), published in 2021.
+This file contains information on the indicators and attributes associated with (1) the third edition of the [Joint External Evaluation Tool (JEE)](https://www.who.int/publications/i/item/9789240051980), published mid-year in 2022; (2) the second edition of the [IHR State Party Self-Assessment Annual Report (SPAR)](https://www.who.int/emergencies/operations/international-health-regulations-monitoring-evaluation-framework/states-parties-self-assessment-annual-reporting), published in 2021; and (2) the Health Emergency Preparedness, Response and Resilience (HEPR) systems capacities identified in annex 1 of the [WHO Report on "Strengthening the Global Architecture for Health Emergency Preparedness, Response and Resilience"](https://www.who.int/emergencies/operations/universal-health---preparedness-review), published in 2022 and associated with the Universal Health & Preparedness Review process.
 
    - **data last updated:** 6 January, 2023 
    - **resolution:** one row per indicator per attribute/score pair
    - **source or reference:** 
       - World Health Organization. Joint external evaluation tool: International Health Regulations (2005)- third edition. Available from: https://www.who.int/publications-detail-redirect/9789240051980 
       - World Health Organization. IHR State Party Self-Assessment Annual Report (SPAR), second edition [Internet]. Available from: https://www.who.int/emergencies/operations/international-health-regulations-monitoring-evaluation-framework/states-parties-self-assessment-annual-reporting
+      - World Health Organization. 10 proposals to build a safer world together: Strengthening the Global Architecture for Health Emergency Preparedness, Response and Resilience. Available from: https://www.who.int/emergencies/operations/universal-health---preparedness-review
 
 
 ### line_items.tsv
