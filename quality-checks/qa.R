@@ -24,22 +24,15 @@ library(scales) ## for commas on axes of plots
 ## Read in data #############################
 #############################################
 
-## TODO: currently reading in private google sheets, when finalized save as flat file and move to data/
-## TODO: check/confirm WASH costs
-
 ## item cost data
-line_items <- read_sheet("https://docs.google.com/spreadsheets/d/1ZLGXzf1Dw77NiTV2bjrolKID-46PQEMR8HCCty_5OK8/edit#gid=0",
-                        sheet = 1) ## read in first tab
+line_items <- read.delim("data/line_items.tsv", header = TRUE)
 
-## info on the JEE at the score/attribute level
-jee <- read.table("data/jee3.tsv", sep = "\t", header = TRUE)
+## info on metrics (including JEE) at the score/attribute level
+metrics <- read.delim("data/metrics.tsv",  header = TRUE)
 
 ## info on unit costs
-unit_costs <- read_sheet("https://docs.google.com/spreadsheets/d/1rQUjW09QO-wXXbSMPL9xl7aYRJCPIvGkqz1R3RhyegE/edit#gid=0",
-                         sheet = 1)
-
-unit_costs_grouped <- read_sheet("https://docs.google.com/spreadsheets/d/1rQUjW09QO-wXXbSMPL9xl7aYRJCPIvGkqz1R3RhyegE/edit#gid=0",
-                         sheet = 2)
+unit_costs <- read.delim("data/unit_costs.tsv", header = TRUE)
+unit_costs_grouped <- read.delim("data/detailed_costing.tsv", header = TRUE)
 
 ## read in info on countries
 countries <- read.table("data/countries.tsv", sep = "\t", header = TRUE)
@@ -47,11 +40,6 @@ countries <- read.table("data/countries.tsv", sep = "\t", header = TRUE)
 #############################################
 ## Clean/reformat data ######################
 #############################################
-
-## TODO: remove initials from line_items table (two fields)
-## TODO: remove remaining items from the JEE table (one field)
-## TODO: remove extra items from the unit costs table (two fields)
-## TODO: update data dictionary 
 
 ## make field names in line_item object more nicely machine readable
 ## standard: snake case ## https://en.wikipedia.org/wiki/Snake_case

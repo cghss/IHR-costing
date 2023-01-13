@@ -10,9 +10,9 @@ This directory contains the underlying datasets that power the IHR costing tool.
 | :---                    | :---                          | :--- 
 | metrics.tsv             | multiple (see below)          | 12 January, 2023
 | countries.tsv           | CIA World Factbook            | 11 December, 2022
-| unit_costs.tsv          | GHSS Research Team            | (to be added)
-| detailed_costing.tsv    | GHSS Research Team            | (to be added)
-| line_items.tsv          | GHSS Research Team            |  13 January, 2022
+| unit_costs.tsv          | GHSS Research Team            | 13 January, 2023
+| detailed_costing.tsv    | GHSS Research Team            | 13 January, 2023
+| line_items.tsv          | GHSS Research Team            | 13 January, 2022
 
 ### metrics.tsv
 This file contains information on the indicators and attributes associated with the first and third editions of the [Joint External Evaluation (JEE)](https://www.who.int/publications/i/item/9789240051980), the second edition of the [IHR State Party Self-Assessment Annual Report (SPAR)](https://www.who.int/emergencies/operations/international-health-regulations-monitoring-evaluation-framework/states-parties-self-assessment-annual-reporting), and the Health Emergency Preparedness, Response and Resilience (HEPR) systems capacities identified in annex 1 of the [WHO Report on "Strengthening the Global Architecture for Health Emergency Preparedness, Response and Resilience"](https://www.who.int/emergencies/operations/universal-health---preparedness-review), associated with the Universal Health & Preparedness Review process. 
@@ -36,14 +36,14 @@ This file documents the activities and costs associated with each score/attribut
 ### unit_costs.tsv
 This file contains information on default unit costs for items included in the IHR costing tool. Of note, these costs are best determined on a local and/or regional basis, as unit costs can and do vary substantially from location to location, particularly unit costs associated with personnel salaries. These references are intended to serve as defaults and available references, but are not meant to replace local expertise in procurement, budgeting, and supply chain expertise.
 
-   - **data last updated:** (to be added)
+   - **data last updated:** 13 January, 2023
    - **resolution:** one row per unit cost
    - **source or reference:** GHSS Research, citations and URLs included throughout
 
 ### detailed_costing.tsv
 This file is included for reference only, and contains documentation of any subcosts used to estimate the unit costs reported in the file unit_costs.tsv. For example, the unit_costs table includes the cost of an "outbreak investigation kit", this detailed costing spreadsheet documents the underlying costs used to calculate that cost on the basis of the items identified as required for an outbreak investigation kit in [Connolly MA, Organization WH. Communicable disease control in emergencies: a field manual. World Health Organization; 2005 cited 2022 Oct 21. vii, pg. 234. Available from: https://apps.who.int/iris/handle/10665/96340
 
-   - **data last updated:** (to be added)
+   - **data last updated:** 13 January, 2023
    - **resolution:** one row per item
    - **source or reference:** GHSS Research, citations and URLs included throughout
 
