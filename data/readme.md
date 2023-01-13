@@ -6,21 +6,21 @@ The IHR Costing Tool helps users generate and review cost estimates to support p
 This directory contains the underlying datasets that power the IHR costing tool. For additional information, please see the data dictionary included as part of this repository (in-progress). Unless otherwise specified, files are saved as .tsv viles (tab separated values) and can be opened using your analysis software of choice.
 
 
-| File                    |  Source                | Data last updated
-| :---                    | :---                   | :--- 
-| metrics.tsv             | JEE 3.0, SPAR          | 6 January, 2023
-| countries.tsv           | CIA World Factbook     | 11 December, 2022
-| country_hospitals.tsv   | OECD Statistics        | 4 July, 2022
-| unit_costs.tsv          | GHSS Research Team     | (to be added)
-| detailed_costing.tsv    | GHSS Research Team     | (to be added)
-| line_items.tsv          | GHSS Research Team     |  23 December, 2022
+| File                    |  Source                       | Data last updated
+| :---                    | :---                          | :--- 
+| metrics.tsv             | multiple (see below)          | 12 January, 2023
+| countries.tsv           | CIA World Factbook            | 11 December, 2022
+| unit_costs.tsv          | GHSS Research Team            | (to be added)
+| detailed_costing.tsv    | GHSS Research Team            | (to be added)
+| line_items.tsv          | GHSS Research Team            |  23 December, 2022
 
 ### metrics.tsv
-This file contains information on the indicators and attributes associated with (1) the third edition of the [Joint External Evaluation Tool (JEE)](https://www.who.int/publications/i/item/9789240051980), published mid-year in 2022; (2) the second edition of the [IHR State Party Self-Assessment Annual Report (SPAR)](https://www.who.int/emergencies/operations/international-health-regulations-monitoring-evaluation-framework/states-parties-self-assessment-annual-reporting), published in 2021; and (2) the Health Emergency Preparedness, Response and Resilience (HEPR) systems capacities identified in annex 1 of the [WHO Report on "Strengthening the Global Architecture for Health Emergency Preparedness, Response and Resilience"](https://www.who.int/emergencies/operations/universal-health---preparedness-review), published in 2022 and associated with the Universal Health & Preparedness Review process.
+This file contains information on the indicators and attributes associated with the first and third editions of the [Joint External Evaluation (JEE)](https://www.who.int/publications/i/item/9789240051980), the second edition of the [IHR State Party Self-Assessment Annual Report (SPAR)](https://www.who.int/emergencies/operations/international-health-regulations-monitoring-evaluation-framework/states-parties-self-assessment-annual-reporting), and the Health Emergency Preparedness, Response and Resilience (HEPR) systems capacities identified in annex 1 of the [WHO Report on "Strengthening the Global Architecture for Health Emergency Preparedness, Response and Resilience"](https://www.who.int/emergencies/operations/universal-health---preparedness-review), associated with the Universal Health & Preparedness Review process. 
 
-   - **data last updated:** 6 January, 2023 
+   - **data last updated:** 12 January, 2023 
    - **resolution:** one row per indicator per attribute/score pair
    - **source or reference:** 
+      - World Health Organization. Joint external evaluation (JEE) tool: International Health Regulations (2005) [Internet]. Geneva: World Health Organization. Available from: https://apps.who.int/iris/handle/10665/204368
       - World Health Organization. Joint external evaluation tool: International Health Regulations (2005)- third edition. Available from: https://www.who.int/publications-detail-redirect/9789240051980 
       - World Health Organization. IHR State Party Self-Assessment Annual Report (SPAR), second edition [Internet]. Available from: https://www.who.int/emergencies/operations/international-health-regulations-monitoring-evaluation-framework/states-parties-self-assessment-annual-reporting
       - World Health Organization. 10 proposals to build a safer world together: Strengthening the Global Architecture for Health Emergency Preparedness, Response and Resilience. Available from: https://www.who.int/emergencies/operations/universal-health---preparedness-review
@@ -48,16 +48,9 @@ This file is included for reference only, and contains documentation of any subc
    - **source or reference:** GHSS Research, citations and URLs included throughout
 
 ### countries.tsv
-This file contains information on geographic areas, including countries and other territories, based on data from the [CIA World Factbook](https://www.cia.gov/the-world-factbook/field/administrative-divisions/) as of 11 December, 2022. It contains one row per country, region, or other geographic area included in the CIA World Factbook administraive dataset. For analyses related to the IHR costing tool, it can be used to estimate the number of administrative regions per country; however, this information is best supplemented by local expertise and information on the administrative organization of IHR-related activities. 
+This file contains information on geographic areas, including countries and other territories, based on data from a number of sources. Please see the generate-country-data/ subdirectory for more information, references, and documentation of data processing
 
-   - **data last updated:** 11 December, 2022
+   - **data last updated:** ongoing
    - **resolution:** one row per country or area
-   - **source or reference:** CIA World Factbook. Administrative divisions [Internet]. 2022 [cited 2022 Dec 11]. Available from: https://www.cia.gov/the-world-factbook/field/administrative-divisions/
-
-### country_hospitals.tsv
-This file contains information the number of hospitals per country, based on data reported by the Organization for Economic Co-operation and Development Statistics Group. Data were extracted on 16 Dec 2022 22:56 UTC (GMT) from OECD.Stat. As of the time of data access, data were last updated within OECD on July 4, 2022. More information on OECD's methodology, per country, is available on OECD.Stat's [website](http://stats.oecd.org/wbos/fileview2.aspx?IDFile=80130ebd-5f8d-482f-9613-2891b0fc0fcf). In the raw data, we did not change any feature/column names from the original data accessed via OECD's [website](https://stats.oecd.org/index.aspx?queryid=30182).
-
-   - **data last updated:** 4 July, 2022
-   - **resolution:** up to one row per country per year per variable (e.g., hospital type)
-   - **source or reference:** OECD. Health Care Resources: Hospitals [Internet]. [cited 2022 Dec 16]. Available from: https://stats.oecd.org/index.aspx?queryid=30182
+   - **source or reference:** (multiple, please see the generate-country-data/ subdirectory for more info)
 
