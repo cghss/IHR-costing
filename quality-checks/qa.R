@@ -243,7 +243,7 @@ line_items %>%
   xlab("Number of times unit is costed in line-items") +
   ylab("") +
   scale_x_continuous(label = comma) +
-  scale_fill_manual(values = c("#172869", "#088BBE", "#1BB6AF")) +
+ scale_fill_manual(values = c("#172869", "#088BBE", "#1BB6AF")) + 
   labs(caption = "", fill = "Cost category") +
   theme_minimal() + 
   theme(plot.caption = element_text(size = 7), legend.position = "bottom") +
