@@ -38,63 +38,16 @@ unit_costs_grouped <- read.delim("data/detailed_costing.tsv", header = TRUE)
 countries <- read.table("data/countries.tsv", sep = "\t", header = TRUE)
 
 #############################################
-## Clean/reformat data ######################
+## Format data ##############################
 #############################################
 
-## make field names in line_item object more nicely machine readable
-## standard: snake case ## https://en.wikipedia.org/wiki/Snake_case
-names(line_items) <- recode(names(line_items),
-       "ID" = "id",
-       "Initials (input)" = "initials_input",
-       "Initials (Q/A)" = "initials_qa",
-       "Indicator" = "indicator",
-       "Score" = "score",
-       "Attribute" = "attribute",
-       "Requirement" = "requirement",
-       "Activity" = "activity",
-       "Unit cost" = "unit_cost",
-       "Unit" = "unit",
-       "Description" = "description",
-       "Administrative level" = "administrative_level",
-       "Cost type" = "cost_type",
-       "Custom multiplier 1" = "custom_multiplier_1",
-       "Custom multiplier 1 unit" = "custom_multiplier_1_unit",
-       "Custom multiplier 2" = "custom_multiplier_2",
-       "Custom multiplier 2 unit" = "custom_multiplier_2_unit",
-       "Relevant references" = "references",
-       "Optional cost?" = "optional_cost",
-       "Notes and additional assumptions" = "notes")
+## treat multipliers as numeric features
+line_items$custom_multiplier_1 <- as.numeric(as.character(line_items$custom_multiplier_1))
+line_items$custom_multiplier_2 <- as.numeric(as.character(line_items$custom_multiplier_2))
 
-names(unit_costs) <- recode(names(unit_costs),
-                            "Unit cost" = "unit_cost",
-                            "Description" = "description",
-                            "Category (Sloan et al)" = "category_sloan",
-                            "Default value (2022 USD)" = "value",
-                            "Cost unit" = "unit",
-                            "Assumptions" = "assumptions",
-                            "URL" = "url")
-
-names(unit_costs_grouped) <- recode(names(unit_costs_grouped),
-                            "Cost name" = "cost_name",
-                            "Cost subcategory (if any)" = "cost_subcategory",
-                            "Item" = "item",
-                            "Unit" = "unit",
-                            "Unit cost" = "unit cost",
-                            "Default value (2022 USD)" = "value",
-                            "Reference (example costed item)" = "reference",
-                            "URL" = "url")
-
-#############################################
-## Field: ID ################################
-#############################################
-
-## TODO: generate unique ID field
-
-## Are all IDs unique?
-# stopifnot(
-#   "Not all IDs are unique" =
-#   nrow(line_items) == length(unique(line_items$id))
-#   )
+## if no multiplier is specified, don't multiply by anything (equivalently, multiply by one)
+line_items$custom_multiplier_1[which(is.na(line_items$custom_multiplier_1))] <- 1
+line_items$custom_multiplier_2[which(is.na(line_items$custom_multiplier_2))] <- 1
 
 #############################################
 ## Field: Indicator #########################
@@ -109,7 +62,7 @@ stopifnot(
 ## do all indicators of the JEE have at least one row in line_items? (except scores of 1 and 5)?
 stopifnot(
   "Missing JEE indicators" = 
-    all(jee$indicator %in% line_items$indicator)
+    all(metrics$indicator[which(metrics$metric == "JEE (3.0)")] %in% line_items$indicator)
 )
 
 #############################################
@@ -123,14 +76,15 @@ stopifnot(
 )
 
 #############################################
-## Field: Attribute #########################
+## Field: Metrics #########################
 #############################################
 
-## do all attributes of the JEE have at least one row in line_items? (except scores of 1 and 5)?
+## do all metrics/asstributes of the JEE have at least one row in line_items? (except scores of 1 and 5)?
 stopifnot(
   "Missing JEE attributes" = 
-  all(jee$attribute[which(jee$score > 1 & jee$score < 5)] %in% line_items$attribute)
+  all(metrics$metrics[which(metrics$score > 1 & metrics$score < 5 & metrics$metric == "JEE (3.0)")] %in% line_items$metrics)
 )
+
 
 #############################################
 ## Field: Requirement #######################
@@ -156,22 +110,15 @@ stopifnot(
 ## Field: Unit cost #########################
 #############################################
 
-## TODO: currently one XX/unknown unit cost, ensure that gets fixed
-
 ## do all unit costs have corresponding cost data in the unit_costs table?
 stopifnot(
   "Inconsistent unit cost data" = 
     all(line_items$unit_cost_name %in% unit_costs$cost_name)
   )
 
-## if you see error, look here to find specific unit costs that may be missing from the unit cost table
-#table(line_items[-which(line_items$unit_cost_name %in% unit_costs$cost_name),]$unit_cost_name)
-
 #############################################
 ## Field: Description #######################
 #############################################
-
-## TODO: currently 2 missing, confirm that they get fixed
 
 ## do all line-items have a complete (non-NULL) description specified?
 stopifnot(
@@ -183,12 +130,10 @@ stopifnot(
 ## Field: Administrative level ##############
 #############################################
 
-## TODO: currently 2 missing, confirm that they get fixed
-
 ## do all line-items have an allowable administrative level specified?
 stopifnot(
   "Non-allowable administrative level" = 
-    all(line_items$administrative_level %in% c("Health facility", "Population", "Local", "Intermediate", "National"))
+    all(line_items$administrative_level %in% c("Health facility", "Population", "Local", "Intermediate", "National", "Additional HWC/per 1000 population", "PoE"))
 )
 
 #############################################
@@ -207,9 +152,9 @@ stopifnot(
 #############################################
 
 unit_costs %>%
-  arrange(desc(value)) %>%
+  arrange(desc(default_value)) %>%
   top_n(30) %>%
-  ggplot(aes(x = value, 
+  ggplot(aes(x = default_value, 
              y = factor(unit_cost, levels = rev(unit_cost)),
              fill = category_sloan)) + ## factor coercion keeps order specified in arrange, since I want the barplot sorted
   geom_bar(stat = "identity", color = "black") +
@@ -254,17 +199,42 @@ line_items %>%
 ## for a selected country ###################
 #############################################
 
+## don't use these data to look year over year
+## assumes no capacity at baseline
+## everything one-time costed in year 1 (that's not how it would happen, actually)
+## then all recurring costs costed each year after that
+## lets us look across all items but not intended to be analyzed over time
 a <- line_items %>%
   left_join(unit_costs, by = "unit_cost") %>%
+  left_join(metrics %>% 
+              filter(metrics$metric == "JEE (3.0)") %>% 
+              select(c(metric_id, metric, pillar)), by = "metric_id") %>%
   bind_cols(countries %>% filter(name == "United States")) %>%
   mutate(administrative_level_multiplier = 
-         ifelse(administrative_level == "National", 1,
-         ifelse(administrative_level == "Intermediate", intermediate_area_count,
-    "error")))
-
-                                                  
+        as.numeric(as.character(
+             ifelse(administrative_level == "National", 1,
+             ifelse(administrative_level == "Intermediate", intermediate_area_count,
+             ## The United States total includes 3,006 counties; 14 boroughs and 11 census areas in Alaska; the District of Columbia; 64 parishes in Louisiana; Baltimore city, Maryland; St. Louis city, Missouri; that part of Yellowstone National Park in Montana; Carson City, Nevada; and 41 independent cities in Virginia.
+             ifelse(administrative_level == "Local", (3006 + 14 + 11  + 1 + 64 + 4 + 1 + 41), ## https://www2.census.gov/geo/pdfs/reference/GARM/Ch4GARM.pdf (exclude yellowstone)    
+             ## Look at community hospitals, https://www.aha.org/statistics/fast-facts-us-hospitals, assume 50% of hospitals participate in IHR related activities
+             ifelse(administrative_level == "Health facility", 5139/.5, 
+             ifelse(administrative_level == "Additional HWC/per 1000 population", 0, 
+             ifelse(administrative_level == "PoE", 5, ## todo pick number
+             ifelse(administrative_level == "Population", 333287557,  ## https://www.census.gov/newsroom/press-releases/2022/2022-population-estimates.html
+             "error"))))))))) %>%
+  mutate(y1cost = default_value*custom_multiplier_1*custom_multiplier_2*administrative_level_multiplier) %>%
+  mutate(y2cost = ifelse(cost_type == "One-time", 0, default_value*custom_multiplier_1*custom_multiplier_2*administrative_level_multiplier)) %>%
+  mutate(y3cost = ifelse(cost_type == "One-time", 0, default_value*custom_multiplier_1*custom_multiplier_2*administrative_level_multiplier)) %>%
+  mutate(y4cost = ifelse(cost_type == "One-time", 0, default_value*custom_multiplier_1*custom_multiplier_2*administrative_level_multiplier)) %>%
+  mutate(y5cost = ifelse(cost_type == "One-time", 0, default_value*custom_multiplier_1*custom_multiplier_2*administrative_level_multiplier)) %>%
+  mutate(cost_5yrs = y1cost + y2cost + y3cost + y4cost + y5cost) 
+                       
+a %>% 
+  treemap(index = c("pillar", "activity"),
+          vSize = "cost_5yrs",
+          fontsize.labels = 1,
+          vColor = "pillar")                    
            
- # mutate(y1cost = value*custom_multiplier_1*custom_multiplier_2*)
 
 #######################################################
 ## Appendix: Calculate grouped unit costs #############
