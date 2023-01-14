@@ -1,0 +1,275 @@
+name	iso_3166	stanag_code	internet_code	intermediate_area_name	intermediate_area_count	intermediate_area_reference	cia_factbook_note
+Afghanistan	AFG	AF | AFG | 004	AFG	province (welayat)	34	CIA World Factbook (2022)	
+Akrotiri	XQZ	- | - | -	-			CIA World Factbook (2022)	
+Albania	ALB	AL | ALB | 008	ALB	counties (qarqe)	12	CIA World Factbook (2022)	
+Algeria	DZA	DZ | DZA | 012	DZA			CIA World Factbook (2022)	
+American Samoa	ASM	AS | ASM | 016	ASM	none	0	CIA World Factbook (2022)	
+Andorra	AND	AD | AND | 020	AND	parishes (parroquies)	7	CIA World Factbook (2022)	
+Angola	AGO	AO | AGO | 024	AGO	provinces (provincias)	18	CIA World Factbook (2022)	
+Anguilla	AIA	AI | AIA | 660	AIA	none	0	CIA World Factbook (2022)	
+Antarctica	ATA	AQ | ATA | 010	ATA			CIA World Factbook (2022)	ISO defines as the territory south of 60 degrees south latitude
+Antigua and Barbuda	ATG	AG | ATG | 028	ATG	parishes and dependences	8	CIA World Factbook (2022)	Research note: 6 parishes and 2 dependencies
+Argentina	ARG	AR | ARG | 032	ARG	provinces (provincias)	23	CIA World Factbook (2022)	
+Armenia	ARM	AM | ARM | 051	ARM	provinces (marzer)	11	CIA World Factbook (2022)	
+Aruba	ABW	AW | ABW | 533	ABW	none	0	CIA World Factbook (2022)	
+Ashmore and Cartier Islands	XAC	- | - | -	AUS			CIA World Factbook (2022)	ISO includes with Australia
+Australia	AUS	AU | AUS | 036	AUS	states and territories	8	CIA World Factbook (2022)	Research note: 6 states and 2 territories
+Austria	AUT	AT | AUT | 040	AUT	states (Bundeslaender)	9	CIA World Factbook (2022)	
+Azerbaijan	AZE	AZ | AZE | 031	AZE	districts (rayonlar)	66	CIA World Factbook (2022)	
+"Bahamas, The"	BHS	BS | BHS | 044	.bs	districts	31	CIA World Factbook (2022)	
+Bahrain	BHR	BH | BHR | 048	BHR	governorates (muhafazat)	4	CIA World Factbook (2022)	
+Baker Island	XBK	- | - | -	UMI			CIA World Factbook (2022)	ISO includes with the US Minor Outlying Islands
+Bangladesh	BGD	BD | BGD | 050	BGD	divisions	8	CIA World Factbook (2022)	
+Barbados	BRB	BB | BRB | 052	BRB	parishes and cities	12	CIA World Factbook (2022)	Research note: 11 parishes and 1 city
+Belarus	BLR	BY | BLR | 112	BLR	regions and municipality	7	CIA World Factbook (2022)	Research note: 6 regions and 1 municipality
+Belgium	BEL	BE | BEL | 056	BEL	regions (regions)	3	CIA World Factbook (2022)	
+Belize	BLZ	BZ | BLZ | 084	BLZ	districts	6	CIA World Factbook (2022)	
+Benin	BEN	BJ | BEN | 204	BEN	departments	12	CIA World Factbook (2022)	
+Bermuda	BMU	BM | BMU | 060	BMU	parishes and municipalities	11	CIA World Factbook (2022)	Research note: 9 parishes and 2 municipalities
+Bhutan	BTN	BT | BTN | 064	BTN	districts	20	CIA World Factbook (2022)	
+Bolivia	BOL	BO | BOL | 068	BOL	departments (departamentos)	9	CIA World Factbook (2022)	
+Bosnia and Herzegovina	BIH	BA | BIH | 070	BIH	first-order administrative divisions	3	CIA World Factbook (2022)	
+Botswana	BWA	BW | BWA | 072	BWA	districts and town councils	16	CIA World Factbook (2022)	Research note: 10 districts and 6 town councils
+Bouvet Island	BVT	BV | BVT | 074	BVT			CIA World Factbook (2022)	
+Brazil	BRA	BR | BRA | 076	BRA	states (estados)	26	CIA World Factbook (2022)	
+British Indian Ocean Territory	IOT	IO | IOT | 086	IOT			CIA World Factbook (2022)	
+British Virgin Islands	VGB	VG | VGB | 092	VGB	none	0	CIA World Factbook (2022)	
+Brunei	BRN	BN | BRN | 096	BRN	districts (daerah-daerah)	4	CIA World Factbook (2022)	
+Bulgaria	BGR	BG | BGR | 100	BGR	provinces (oblasti)	28	CIA World Factbook (2022)	
+Burkina Faso	BFA	BF | BFA | 854	BFA	regions	13	CIA World Factbook (2022)	
+Burma	MMR	MM | MMR | 104	MMR	regions (taing-myar)	13	CIA World Factbook (2022)	ISO uses the name Myanmar
+Burundi	BDI	BI | BDI | 108	BDI	provinces	18	CIA World Factbook (2022)	
+Cabo Verde	CPV	CV | CPV | 132	CPV	municipalities (concelhos)	22	CIA World Factbook (2022)	
+Cambodia	KHM	KH | KHM | 116	KHM	provinces (khett)	24	CIA World Factbook (2022)	
+Cameroon	CMR	CM | CMR | 120	CMR	regions	10	CIA World Factbook (2022)	
+Canada	CAN	CA | CAN | 124	CAN	provinces and territories	13	CIA World Factbook (2022)	Research note: 10 provinces and 3 territories
+Cayman Islands	CYM	KY | CYM | 136	CYM	districts	6	CIA World Factbook (2022)	
+Central African Republic	CAF	CF | CAF | 140	CAF	prefectures	14	CIA World Factbook (2022)	
+Chad	TCD	TD | TCD | 148	TCD	provinces	23	CIA World Factbook (2022)	
+Chile	CHL	CL | CHL | 152	CHL	regions	16	CIA World Factbook (2022)	
+China	CHN	CN | CHN | 156	CHN	provinces and autonomous regions and municipalities and special administrative regions	34	CIA World Factbook (2022)	Research note: 23 provinces 5 autonomous regions  4 municipalities and two special administrative regions
+Christmas Island	CXR	CX | CXR | 162	CXR	none	0	CIA World Factbook (2022)	
+Clipperton Island	CPT	- | - | -	FYP			CIA World Factbook (2022)	ISO includes with France
+Cocos (Keeling) Islands	CCK	CC | CCK | 166	AUS	none	0	CIA World Factbook (2022)	
+Colombia	COL	CO | COL | 170	COL	departments	32	CIA World Factbook (2022)	
+Comoros	COM	KM | COM | 174	COM	islands	3	CIA World Factbook (2022)	
+"Congo, Democratic Republic of the"	COD	CD | COD | 180		provinces	26	CIA World Factbook (2022)	formerly Zaire
+"Congo, Republic of the"	COG	CG | COG | 178		departments	12	CIA World Factbook (2022)	
+Cook Islands	COK	CK | COK | 184	COK	none	0	CIA World Factbook (2022)	
+Coral Sea Islands	XCS	- | - | -	AUS			CIA World Factbook (2022)	ISO includes with Australia
+Costa Rica	CRI	CR | CRI | 188	CRI	provinces	7	CIA World Factbook (2022)	
+Cote dIvoire	CIV	- | - | -		districts and autonomous districts 	14	CIA World Factbook (2022)	Research note: 12 districts and 2 autonomous districts
+Croatia	HRV	HR | HRV | 191	HRV	country and city with special country status	21	CIA World Factbook (2022)	Research note: 20 countries and one city with special county status
+Cuba	CUB	CU | CUB | 192	CUB	provinces	12	CIA World Factbook (2022)	
+Curacao	CUW	CW | CUW | 531	-	none	0	CIA World Factbook (2022)	
+Cyprus	CYP	CY | CYP | 196	CYP	districts	6	CIA World Factbook (2022)	
+Czechia	CZE	CZ | CZE | 203	CZE	regions	13	CIA World Factbook (2022)	
+Denmark	DNK	DK | DNK | 208	DNK	regions	5	CIA World Factbook (2022)	
+Dhekelia	XXD	- | - | -	-			CIA World Factbook (2022)	
+Djibouti	DJI	DJ | DJI | 262	DJI	districts	6	CIA World Factbook (2022)	
+Dominica	DMA	DM | DMA | 212	DMA	parishes	10	CIA World Factbook (2022)	
+Dominican Republic	DOM	DO | DOM | 214	DOM	regions	10	CIA World Factbook (2022)	
+Ecuador	ECU	EC | ECU | 218	ECU	provinces	24	CIA World Factbook (2022)	
+Egypt	EGY	EG | EGY | 818	EGY	governates (muhafazat)	27	CIA World Factbook (2022)	
+El Salvador	SLV	SV | SLV | 222	SLV	departments	14	CIA World Factbook (2022)	
+Equatorial Guinea	GNQ	GQ | GNQ | 226	GNQ	provinces (provincias)	8	CIA World Factbook (2022)	
+Eritrea	ERI	ER | ERI | 232	ERI	regions (zobatat)	6	CIA World Factbook (2022)	
+Estonia	EST	EE | EST | 233	EST	urban municipalities (linnad)	15	CIA World Factbook (2022)	
+Eswatini	SWZ	SZ | SWZ | 748	SWZ	regions	4	CIA World Factbook (2022)	
+Ethiopia	ETH	ET | ETH | 231	ETH	kililoch and astedader	13	CIA World Factbook (2022)	Research note: 11 ethnically based regional states (kililoch) and and 2 chartered cities (astedader)
+Europa Island						CIA World Factbook (2022)	
+Falkland Islands (Islas Malvinas)	FLK	FK | FLK | 238	FLK	none	0	CIA World Factbook (2022)	
+Faroe Islands	FRO	FO | FRO | 234	FRO	first-order municipalities	29	CIA World Factbook (2022)	
+Fiji	FJI	FJ | FJI | 242	FJI	provinces and dependency	15	CIA World Factbook (2022)	Research note: 14 provinces and 1 dependency
+Finland	FIN	FI | FIN | 246	FIN	regions (maakunnat)	19	CIA World Factbook (2022)	
+France	FRA	FR | FRA | 250	FRA	regions	18	CIA World Factbook (2022)	"ISO includes metropolitan France along with the dependencies of Clipperton Island, French Guiana, French Polynesia, French Southern and Antarctic Lands, Guadeloupe, Martinique, Mayotte, New Caledonia, Reunion, Saint Pierre and Miquelon, Wallis and Futuna"
+French Guiana	GF | GUF | 254	GUF	.gf			CIA World Factbook (2022)	
+French Polynesia	PYF	PF | PYF | 258	PYF	administrative subdivisions	5	CIA World Factbook (2022)	
+French Southern and Antarctic Lands	ATF	TF | ATF | 260	ATF	none	0	CIA World Factbook (2022)	GENC does not include the French-claimed portion of Antarctica (Terre Adelie)
+Gabon	GAB	GA | GAB | 266	GAB	provinces	9	CIA World Factbook (2022)	
+"Gabia, The"		GMB	GM | GMB | 270	regions city and municipality	7	CIA World Factbook (2022)	Research note: 5 regions and 1 city and 1 municipality
+Gaza Strip	XGZ	PS | PSE | 275	PSE			CIA World Factbook (2022)	ISO identifies as Occupied Palestinian Territory
+Georgia	GEO	GE | GEO | 268	GEO	regions (mkharebi)	9	CIA World Factbook (2022)	
+Germany	DEU	DE | DEU | 276	DEU	states	16	CIA World Factbook (2022)	
+Ghana	GHA	GH | GHA | 288	GHA	regions	16	CIA World Factbook (2022)	
+Gibraltar	GIB	GI | GIB | 292	GIB	none	0	CIA World Factbook (2022)	
+Glorioso Islands	- | - | -	-	-			CIA World Factbook (2022)	
+Greece	GRC	GR | GRC | 300	GRC	regions	13	CIA World Factbook (2022)	"For its internal communications, the  European Union recommends the use of the code EL in lieu of the ISO 3166-2 code of GR"
+Greenland	GRL	GL | GRL | 304	GRL	municipalities (kommuner)	5	CIA World Factbook (2022)	
+Grenada	GRD	GD | GRD | 308	GRD	parishes and dependency	7	CIA World Factbook (2022)	Research note: 6 parishes and 1 dependency
+Guadeloupe	GP | GLP | 312	GLP	.gp			CIA World Factbook (2022)	
+Guam	GUM	GU | GUM | 316	GUM	none	0	CIA World Factbook (2022)	
+Guatemala	GTM	GT | GTM | 320	GTM	departments (departmentos)	22	CIA World Factbook (2022)	
+Guernsey	GGY	GG | GGY | 831	UK	none	0	CIA World Factbook (2022)	
+Guinea	GIN	GN | GIN | 324	GIN	regions administrative	7	CIA World Factbook (2022)	
+Guinea-Bissau	GNB	GW | GNB | 624	GNB	regions	9	CIA World Factbook (2022)	
+Guyana	GUY	GY | GUY | 328	GUY	regions	10	CIA World Factbook (2022)	
+Haiti	HTI	HT | HTI | 332	HTI	departments (departements)	10	CIA World Factbook (2022)	
+Heard Island and McDonald Islands	HMD	HM | HMD | 334	HMD			CIA World Factbook (2022)	
+Holy See (Vatican City)	VAT	VA | VAT | 336	VAT	none	0	CIA World Factbook (2022)	
+Honduras	HND	HN | HND | 340	HND	departments (departamentos)	18	CIA World Factbook (2022)	
+Hong Kong	HKG	HK | HKG | 344	HKG	none	0	CIA World Factbook (2022)	
+Howland Island	XHO		UMI			CIA World Factbook (2022)	
+Hungary	HUN	HU | HUN | 348	HUN	counties and city with county rights and capital city	43	CIA World Factbook (2022)	Research note: 19 counties and 23 cities with county rights and 1 capital city
+Iceland	ISL	IS | ISL | 352	ISL	municipalities (sveitarfelog)	64	CIA World Factbook (2022)	
+India	IND	IN | IND | 356	IND	states and union territories	36	CIA World Factbook (2022)	Research note: 28 states and 8 union territories
+Indonesia	IDN	ID | IDN | 360	IDN	provinces and autonomous province and special region and national capital district	37	CIA World Factbook (2022)	Research note: 34 provinces and 1 autonomous province and 1 special region and 1 national capital district
+Iran	IRN	IR | IRN | 364	IRN	provinces (ostanha)	31	CIA World Factbook (2022)	
+Iraq	IRQ	IQ | IRQ | 368	IRQ	governorates (muhafazat)	18	CIA World Factbook (2022)	
+Ireland	IRL	IE | IRL | 372	IRL	counties and cities	31	CIA World Factbook (2022)	Resarch note: 28 counties and 3 cities
+Isle of Man	IMN	IM | IMN | 833	UK	none	0	CIA World Factbook (2022)	
+Israel	ISR	IL | ISR | 376	ISR	districts (mehozot)	6	CIA World Factbook (2022)	
+Italy	ITA	IT | ITA | 380	ITA	regions and autonomous regions	20	CIA World Factbook (2022)	Research note: 15 regions and 5 autonomous regions
+Jamaica	JAM	JM | JAM | 388	JAM	parishes	14	CIA World Factbook (2022)	
+Jan Mayen	XJM		SJM			CIA World Factbook (2022)	ISO includes with Svalbard
+Japan	JPN	JP | JPN | 392	JPN	prefectures	47	CIA World Factbook (2022)	
+Jarvis Island	XJV		UMI			CIA World Factbook (2022)	ISO includes with the US Minor Outlying Islands
+Jersey	JEY	JE | JEY | 832	UK	none	0	CIA World Factbook (2022)	
+Johnston Atoll	XJA		UMI			CIA World Factbook (2022)	ISO includes with the US Minor Outlying Islands
+Jordan	JOR	JO | JOR | 400	JOR	governorates (muhafazat)	12	CIA World Factbook (2022)	
+Juan de Nova Island						CIA World Factbook (2022)	
+Kazakhstan	KAZ	KZ | KAZ | 398	KAZ	provinces and cities	21	CIA World Factbook (2022)	Research note: 17 provinces and 4 cities
+Kenya	KEN	KE | KEN | 404	KEN	counties	47	CIA World Factbook (2022)	
+Kingman Reef	XKR		UMI			CIA World Factbook (2022)	ISO includes with the US Minor Outlying Islands
+Kiribati	KIR	KI | KIR | 296	KIR	geographical units	3	CIA World Factbook (2022)	
+North Korea	PRK	KP | PRK | 408		provinces and special administration cities	13	CIA World Factbook (2022)	Research note: 9 provinces and 4 special administration cities
+South Korea	KOR	KR | KOR | 410		provinces and metropolitan cities and special city and special self-governing city 	17	CIA World Factbook (2022)	Research note: 9 provinces and 6 metropolitan cities and 1 special city and 1 special self-governing city
+Kosovo	XKS	XK | XKS | -	-	municipalities (komunat)	38	CIA World Factbook (2022)	XK and XKS are  ISO 3166 user assigned codes; ISO 3166 Maintenace Authority has not assigned codes
+Kuwait	KWT	KW | KWT | 414	KWT	governorates (muhafazat)	6	CIA World Factbook (2022)	
+Kyrgyzstan	KGZ	KG | KGZ | 417	KGZ	provinces and cities	8	CIA World Factbook (2022)	Research note: 7 provinces and 2 cities
+Laos	LAO	LA | LAO | 418	LAO	provinces and prefecture	8	CIA World Factbook (2022)	Research note: 7 provinces and 1 prefecture
+Latvia	LVA	LV | LVA | 428	LVA	municipalities and state cities	43	CIA World Factbook (2022)	Research note: 36 municipalities and 7 state cities
+Lebanon	LBN	LB | LBN | 422	LBN	governorates	8	CIA World Factbook (2022)	
+Lesotho	LSO	LS | LSO | 426	LSO	districts	10	CIA World Factbook (2022)	
+Liberia	LBR	LR | LBR | 430	LBR	counties	15	CIA World Factbook (2022)	
+Libya	LBY	LY | LBY | 434	LBY	governorates (muhafazah)	22	CIA World Factbook (2022)	
+Liechtenstein	LIE	LI | LIE | 438	LIE	communes (Gemeinden)	11	CIA World Factbook (2022)	
+Lithuania	LTU	LT | LTU | 440	LTU	municipalities (savivaldybe)	60	CIA World Factbook (2022)	
+Luxembourg	LUX	LU | LUX | 442	LUX	cantons	12	CIA World Factbook (2022)	
+Macau	MAC	MO | MAC | 446	MAC	none	0	CIA World Factbook (2022)	
+Madagascar	MDG	MG | MDG | 450	MDG	provinces (faritany)	6	CIA World Factbook (2022)	
+Malawi	MWI	MW | MWI | 454	MWI	districts	28	CIA World Factbook (2022)	
+Malaysia	MYS	MY | MYS | 458	MYS	states and federal territory and components	17	CIA World Factbook (2022)	Research note: 13 states and 1 federal territory and 3 components
+Maldives	MDV	MV | MDV | 462	MDV	administrative atolls	21	CIA World Factbook (2022)	
+Mali	MLI	ML | MLI | 466	MLI	regions and district	11	CIA World Factbook (2022)	Research note: 10 regions and 1 district
+Malta	MLT	MT | MLT | 470	MLT	localities (Il-lokalita)	68	CIA World Factbook (2022)	
+Marshall Islands	MHL	MH | MHL | 584	MHL	municipalities	24	CIA World Factbook (2022)	
+Martinique	MQ | MTQ | 474	MTQ	.mq			CIA World Factbook (2022)	
+Mauritania	MRT	MR | MRT | 478	MRT	regions (wilayas)	15	CIA World Factbook (2022)	
+Mauritius	MUS	MU | MUS | 480	MUS	districts and dependencies	12	CIA World Factbook (2022)	Research note: 9 districts and 3 dependencies
+Mayotte						CIA World Factbook (2022)	
+Mexico	MEX	MX | MEX | 484	MEX	states	32	CIA World Factbook (2022)	
+"Micronesia, Federated States of"	FSM	FM | FSM | 583	.fm	states	4	CIA World Factbook (2022)	
+Midway Islands	XMW		UMI			CIA World Factbook (2022)	ISO includes with the US Minor Outlying Islands
+Moldova	MDA	MD | MDA | 498	MDA	raions and municipalities and autonomous territorial unit	36	CIA World Factbook (2022)	Research note: 32 raions and 3 municipalities and 1 autonomous territorial unit
+Monaco	MCO	MC | MCO | 492	MCO	none	0	CIA World Factbook (2022)	
+Mongolia	MNG	MN | MNG | 496	MNG	provincesn(aymguud)	31	CIA World Factbook (2022)	
+Montenegro	MNE	ME | MNE | 499	MNE	municipalities (opstine)	24	CIA World Factbook (2022)	
+Montserrat	MSR	MS | MSR | 500	MSR	parishes	3	CIA World Factbook (2022)	
+Morocco	MAR	MA | MAR | 504	MAR	regions	12	CIA World Factbook (2022)	
+Mozambique	MOZ	MZ | MOZ | 508	MOZ	provinces and city	11	CIA World Factbook (2022)	Research note: 10 provinces and 1 city
+Myanmar						CIA World Factbook (2022)	
+Namibia	NAM	NA | NAM | 516	NAM	regions	14	CIA World Factbook (2022)	
+Nauru	NRU	NR | NRU | 520	NRU	districts	14	CIA World Factbook (2022)	
+Navassa Island	XNV	- | - | -	UMI			CIA World Factbook (2022)	ISO includes with the US Minor Outlying Islands
+Nepal	NPL	NP | NPL | 524	NPL	provinces	7	CIA World Factbook (2022)	
+Netherlands	NLD	NL | NLD | 528	NLD	provinces and public entities	15	CIA World Factbook (2022)	Research note: 12 provinces and 3 public entities
+New Caledonia	NCL	NC | NCL | 540	NCL	provinces	3	CIA World Factbook (2022)	
+New Zealand	NZL	NZ | NZL | 554	NZL	regions and territory	17	CIA World Factbook (2022)	Research note: 16 regions and 1 territory
+Nicaragua	NIC	NI | NIC | 558	NIC	departments (departamentos)	15	CIA World Factbook (2022)	
+Niger	NER	NE | NER | 562	NER	regions and capital district	8	CIA World Factbook (2022)	Research note: 7 regions and 1 capital district
+Nigeria	NGA	NG | NGA | 566	NGA	states and territory	37	CIA World Factbook (2022)	Research note: 26 states and 1 territory
+Niue	NIU	NU | NIU | 570	NIU	none	0	CIA World Factbook (2022)	
+Norfolk Island	NFK	NF | NFK | 574	NFK			CIA World Factbook (2022)	
+North Macedonia	MKD	MK | MKD | 807	FYR	municipalities and city	71	CIA World Factbook (2022)	Research note: 70 municipalities and 1 city
+Northern Mariana Islands	MNP	MP | MNP | 580	MNP	none	0	CIA World Factbook (2022)	
+Norway	NOR	NO | NOR | 578	NOR	counties	11	CIA World Factbook (2022)	
+Oman	OMN	OM | OMN | 512	OMN	governorates (muhafazat)	11	CIA World Factbook (2022)	
+Pakistan	PAK	PK | PAK | 586	PAK	provinces and Pakistan-administered areas and capital territory	7	CIA World Factbook (2022)	Research note: 4 provinces 2 Pakistan-administered areas and 1 capital territory
+Palau	PLW	PW | PLW | 585	PLW	states	16	CIA World Factbook (2022)	
+Palmyra Atoll	XPL	- | - | -	UMI			CIA World Factbook (2022)	ISO includes with the US Minor Outlying Islands
+Panama	PAN	PA | PAN | 591	PAN	provinces and indigenous regions	14	CIA World Factbook (2022)	Research note: 10 provinces and 4 indigenous regions
+Papua New Guinea	PNG	PG | PNG | 598	PNG	provinces and autonomous region and district	22	CIA World Factbook (2022)	Research note: 20 provinces and 1 autonomous region and 1 district
+Paracel Islands	XPR	- | - | -	-			CIA World Factbook (2022)	
+Paraguay	PRY	PY | PRY | 600	PRY	departments (departamentos)	17	CIA World Factbook (2022)	
+Peru	PER	PE | PER | 604	PER	regions and province	26	CIA World Factbook (2022)	Research note: 25 regions and 1 province
+Philippines	PHL	PH | PHL | 608	PHL	provinces and chartered cities	119	CIA World Factbook (2022)	Research note: 81 provinces and 38 chartered cities
+Pitcairn Islands	PCN	PN | PCN | 612	PCN	none	0	CIA World Factbook (2022)	
+Poland	POL	PL | POL | 616	POL	provinces (wojewodztwa)	16	CIA World Factbook (2022)	
+Portugal	PRT	PT | PRT | 620	PRT	districts and autonomous regions	20	CIA World Factbook (2022)	Research note: 18 districts and 2 autonomous units
+Puerto Rico	PRI	PR | PRI | 630	PRI	none	0	CIA World Factbook (2022)	
+Qatar	QAT	QA | QAT | 634	QAT	municipalities (baladiyat)	8	CIA World Factbook (2022)	
+Reunion	RE | REU | 638	REU	.re			CIA World Factbook (2022)	
+Romania	ROU	RO | ROU | 642	ROU	counties and municipalities	42	CIA World Factbook (2022)	Research note: 41 counties and 1 municipality
+Russia	RUS	RU | RUS | 643	RUS	provinces and republics and autonomous okrugs and krays and federal cities and autonomous oblast	93	CIA World Factbook (2022)	Research note: 46 provinces  and 21 republics and 4 autonomous okrugs and 9 krays and 2 federal cities and 1 autonomous oblast
+Rwanda	RWA	RW | RWA | 646	RWA	provinces and city	5	CIA World Factbook (2022)	Research note: 4 provinces and 1 city
+Saint Barthelemy	BLM	BL | BLM | 652	-			CIA World Factbook (2022)	ccTLD  .fr and .gp may also be used
+Saint Helena Ascension and Tristan da Cunha	SHN	SHN	.sh	administrative areas	3	CIA World Factbook (2022)	
+Saint Kitts and Nevis	KNA	KN | KNA | 659	KNA	parishes	14	CIA World Factbook (2022)	
+Saint Lucia	LCA	LC | LCA | 662	LCA	districts	10	CIA World Factbook (2022)	
+Saint Martin	MAF	MF | MAF | 663	-			CIA World Factbook (2022)	ccTLD  .fr and .gp may also be used
+Saint Pierre and Miquelon	SPM	PM | SPM | 666	SPM	none	0	CIA World Factbook (2022)	
+Saint Vincent and the Grenadines	VCT	VC | VCT | 670	VCT	parishes	6	CIA World Factbook (2022)	
+Samoa	WSM	WS | WSM | 882	WSM	districts	11	CIA World Factbook (2022)	
+San Marino	SMR	SM | SMR | 674	SMR	municpalities (castelli)	9	CIA World Factbook (2022)	
+Sao Tome and Principe	STP	ST | STP | 678	STP	districts (distritos)	6	CIA World Factbook (2022)	
+Saudi Arabia	SAU	SA | SAU | 682	SAU	regions (manatiq)	13	CIA World Factbook (2022)	
+Senegal	SEN	SN | SEN | 686	SEN	regions	14	CIA World Factbook (2022)	
+Serbia	SRB	RS | SRB | 688	-	municipalities (opstine)	117	CIA World Factbook (2022)	
+Seychelles	SYC	SC | SYC | 690	SYC	administrative districts	27	CIA World Factbook (2022)	
+Sierra Leone	SLE	SL | SLE | 694	SLE	provinces and area	5	CIA World Factbook (2022)	Research note: 4 provinces and 1 area
+Singapore	SGP	SG | SGP | 702	SGP	none	0	CIA World Factbook (2022)	
+Sint Maarten	SXM	SX | SXM | 534	-	none	0	CIA World Factbook (2022)	
+Slovakia	SVK	SK | SVK | 703	SVK	regions (kraje)	8	CIA World Factbook (2022)	
+Slovenia	SVN	SI | SVN | 705	SVN	municipalities (obcine)	200	CIA World Factbook (2022)	
+Solomon Islands	SLB	SB | SLB | 090	SLB	provinces and city	10	CIA World Factbook (2022)	Research note: 9 provinces and 1 city
+Somalia	SOM	SO | SOM | 706	SOM	regions (gobollo)	18	CIA World Factbook (2022)	
+South Africa	ZAF	ZA | ZAF | 710	ZAF	provinces	9	CIA World Factbook (2022)	
+South Georgia and the Islands	GS | SGS | 239	SGS	.gs			CIA World Factbook (2022)	
+South Sudan	SSD	SS | SSD | 728	-	states	10	CIA World Factbook (2022)	"IANA has designated .ss as the ccTLD for South Sudan, however it has not been activated in DNS root zone"
+Spain	ESP	ES | ESP | 724	ESP	autonomous communities and autonomous cities	19	CIA World Factbook (2022)	Research note: 17 autonomous communities and 2 autonomous cities
+Spratly Islands	XSP	- | - | -	-			CIA World Factbook (2022)	
+Sri Lanka	LKA	LK | LKA | 144	LKA	provinces	8	CIA World Factbook (2022)	
+Sudan	SDN	SD | SDN | 729	SDN	states (wilayat)	18	CIA World Factbook (2022)	
+Suriname	SUR	SR | SUR | 740	SUR	districts	10	CIA World Factbook (2022)	
+Svalbard	XSV	SJ | SJM | 744	SJM			CIA World Factbook (2022)	ISO includes Jan Mayen
+Sweden	SWE	SE | SWE | 752	SWE	counties	21	CIA World Factbook (2022)	
+Switzerland	CHE	CH | CHE | 756	CHE	cantons	26	CIA World Factbook (2022)	
+Syria	SYR	SY | SYR | 760	SYR	provinces (muhafazat)	14	CIA World Factbook (2022)	
+Taiwan	TWN	TW | TWN | 158	TWN	counties and cities and special municipalities	22	CIA World Factbook (2022)	Research note: 13 counties 3 cities and 6 special municipalities
+Tajikistan	TJK	TJ | TJK | 762	TJK	provinces and autonomous province and capital region and District Under Republic Administration	5	CIA World Factbook (2022)	Research note: 2 provinces and 1 autonomous province and 1 capital region and 1 area referred to as Districts Under Republic Administration
+Tanzania	TZA	TZ | TZA | 834	TZA	regions	31	CIA World Factbook (2022)	
+Thailand	THA	TH | THA | 764	THA	provinces and municipality	77	CIA World Factbook (2022)	Research note: 76 provinces and 1 municiality
+Timor-Leste	TLS	TL | TLS | 626	TLS	municipalities and special administrative region		CIA World Factbook (2022)	Research note: 12 municipalities and one special administrative region
+Togo	TGO	TG | TGO | 768	TGO	regions	5	CIA World Factbook (2022)	
+Tokelau	TKL	TK | TKL | 772	TKL	none	0	CIA World Factbook (2022)	
+Tonga	TON	TO | TON | 776	TON	island divisions	5	CIA World Factbook (2022)	
+Trinidad and Tobago	TTO	TT | TTO | 780	TTO	regions and boroughs and cities and ward	15	CIA World Factbook (2022)	Research note: 9 regions and 3 boroughs and 2 cities and 1 ward
+Tromelin Island						CIA World Factbook (2022)	
+Tunisia	TUN	TN | TUN | 788	TUN	governorates (wilayat)	24	CIA World Factbook (2022)	
+Turkey (Turkiye)	TUR	TR | TUR | 792	TUR	provinces (iller)	81	CIA World Factbook (2022)	
+Turkmenistan	TKM	TM | TKM | 795	TKM	provinces and independent city	6	CIA World Factbook (2022)	Research note: 5 provinces and 1 independent city
+Turks and Caicos Islands	TCA	TC | TCA | 796	TCA	none	0	CIA World Factbook (2022)	
+Tuvalu	TUV	TV | TUV | 798	TUV	island councils and town council	8	CIA World Factbook (2022)	Research note: 7 island councils and 1 town council
+Uganda	UGA	UG | UGA | 800	UGA	districts and capital city	135	CIA World Factbook (2022)	Research note: 134 districts and 1 capital city
+Ukraine	UKR	UA | UKR | 804	UKR	provinces and autonomous republic and municipalities with oblast status	27	CIA World Factbook (2022)	Research note: 24 provinces and 1 autonomous republic and 2 municipalities with oblast status
+United Arab Emirates	ARE	AE | ARE | 784	ARE	emirates (imarat)	7	CIA World Factbook (2022)	
+United Kingdom	GBR	GB | GBR | 826	GBR	see CIA World Factbook for additional details		CIA World Factbook (2022)	"for its internal communications, the  European Union recommends the use of the code UK in lieu of the ISO 3166-2 code of GB"
+United States	USA	US | USA | 840	USA	50 states and district	51	CIA World Factbook (2022)	
+United States Minor Outlying Islands}	UM | UMI | 581	-	.um			CIA World Factbook (2022)	
+Uruguay	URY	UY | URY | 858	URY	departments (departamentos)	19	CIA World Factbook (2022)	
+Uzbekistan	UZB	UZ | UZB | 860	UZB	provinces and autonomous republic and city	14	CIA World Factbook (2022)	Research note: 12 provinces and 1 autonomous republic and 1 city
+Vanuatu	VUT	VU | VUT | 548	VUT	provinces	6	CIA World Factbook (2022)	
+Venezuela	VEN	VE | VEN | 862	VEN	states and capital district federal dependency	25	CIA World Factbook (2022)	Research note: 23 states and 1 capital district and 1 federal dependency
+Vietnam	VNM	VN | VNM | 704	VNM	provinces and municipalities	63	CIA World Factbook (2022)	Research note: 58 provinces and 5 municipalities
+Virgin Islands	VIR	VI | VIR | 850	VIR	none	0	CIA World Factbook (2022)	
+Virgin Islands (UK)	- | - | -	-	.vg			CIA World Factbook (2022)	
+Virgin Islands (US)	- | - | -	-	.vi			CIA World Factbook (2022)	
+Wake Island	XWK	- | - | -	UMI			CIA World Factbook (2022)	ISO includes with the US Minor Outlying Islands
+Wallis and Futuna	WLF	WF | WLF | 876	WLF	administrative precincts (circonscriptions)	3	CIA World Factbook (2022)	
+West Bank	XWB	PS | PSE | 275	PSE			CIA World Factbook (2022)	ISO identifies as Occupied Palestinian Territory
+Western Sahara	EH | ESH | 732	ESH	.eh			CIA World Factbook (2022)	
+Western Samoa	- | - | -	-	.ws			CIA World Factbook (2022)	
+Yemen	YEM	YE | YEM | 887	YEM	governorates (muhafazat)	22	CIA World Factbook (2022)	
+Zambia	ZMB	ZM | ZMB | 894	ZMB	provinces	10	CIA World Factbook (2022)	
+Zimbabwe	ZWE	ZW | ZWE | 716	ZWE	provinces and cities with provincial status	10	CIA World Factbook (2022)	Research note: 8 provinces and 2 cities with provincial status

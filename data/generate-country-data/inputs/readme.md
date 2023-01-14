@@ -1,22 +1,24 @@
 # Country-level data inputs
-## World Bank Group
 
 This directory contains data accessed from the World Bank group to summarize information about countries or other geopolitical areas. The table below documents the sources of each table included in this directory.
 
 All files saved in this subdirectory have the same format and contents as the original datasets obtained from the World Bank. They are stored here as references and for research purposes, but researchers aiming to use these raw data for their own purposes should consult the references below to obtain original data from the World Bank.
 
 
-| Directory               | File                              |  Source           | Data last updated
-| :---                    | :---                              | :---              | :--- 
-| oecd                    | country_hospitals.tsv.            | OECD              | 4 July, 2022 (acessed 16 December, 2022)
-| world-bank              | CLASS.xlsx                        | World Bank        | January 2023 (accessed 7 January, 2023)
-| world-bank              | OGHIST.xlsx                       | World Bank        | January 2023 (accessed 7 January, 2023)
-| who                     | medical_doctors_per10000.csv      | WHO               | 24 January 2022 (accessed 13 January, 2023)
-| who                     | nursing_midwives_per10000.csv     | WHO               | 8 February 2022 (accessed 13 January, 2023)
-| who                     | chw_count.csv                     | WHO               | 12 January 2022 (accessed 13 January, 2023)
+| Directory               | File                              |  Source             | Data last updated
+| :---                    | :---                              | :---                | :--- 
+| countries.tsv           | CIA World Factbook                | CIA World Factbook  | 9 December, 2022
+| oecd                    | country_hospitals.tsv.            | OECD                | 4 July, 2022 (acessed 16 December, 2022)
+| world-bank              | CLASS.xlsx                        | World Bank          | January 2023 (accessed 7 January, 2023)
+| world-bank              | OGHIST.xlsx                       | World Bank          | January 2023 (accessed 7 January, 2023)
+| who                     | medical_doctors_per10000.csv      | WHO                 | 24 January 2022 (accessed 13 January, 2023)
+| who                     | nursing_midwives_per10000.csv     | WHO                 | 8 February 2022 (accessed 13 January, 2023)
+| who                     | chw_count.csv                     | WHO                 | 12 January 2022 (accessed 13 January, 2023)
 
 
 **References**
+
+CIA World Factbook. Administrative divisions [Internet]. 2022 [cited 2022 Dec 9]. Available from: https://www.cia.gov/the-world-factbook/field/administrative-divisions/
 
 OECD. Health Care Resources: Hospitals [Internet]. [cited 2022 Dec 16]. Available from: https://stats.oecd.org/index.aspx?queryid=30182
 

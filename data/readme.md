@@ -6,13 +6,13 @@ The IHR Costing Tool helps users generate and review cost estimates to support p
 This directory contains the underlying datasets that power the IHR costing tool. For additional information, please see the data dictionary included as part of this repository (in-progress). Unless otherwise specified, files are saved as .tsv viles (tab separated values) and can be opened using your analysis software of choice.
 
 
-| File                    |  Source                       | Data last updated
-| :---                    | :---                          | :--- 
-| metrics.tsv             | multiple (see below)          | 12 January, 2023
-| countries.tsv           | CIA World Factbook            | 11 December, 2022
-| unit_costs.tsv          | GHSS Research Team            | 13 January, 2023
-| detailed_costing.tsv    | GHSS Research Team            | 13 January, 2023
-| line_items.tsv          | GHSS Research Team            | 13 January, 2022
+| File                    |  Source                                        | Data last updated
+| :---                    | :---                                           | :--- 
+| metrics.tsv             | multiple (see below)                           | 12 January, 2023
+| countries.tsv           | multiple (see generate-country-data)           | 11 December, 2022
+| unit_costs.tsv          | GHSS Research Team                             | 13 January, 2023
+| detailed_costing.tsv    | GHSS Research Team                             | 13 January, 2023
+| line_items.tsv          | GHSS Research Team                             | 13 January, 2022
 
 ### metrics.tsv
 This file contains information on the indicators and attributes associated with the first and third editions of the [Joint External Evaluation (JEE)](https://www.who.int/publications/i/item/9789240051980), the second edition of the [IHR State Party Self-Assessment Annual Report (SPAR)](https://www.who.int/emergencies/operations/international-health-regulations-monitoring-evaluation-framework/states-parties-self-assessment-annual-reporting), and the Health Emergency Preparedness, Response and Resilience (HEPR) systems capacities identified in annex 1 of the [WHO Report on "Strengthening the Global Architecture for Health Emergency Preparedness, Response and Resilience"](https://www.who.int/emergencies/operations/universal-health---preparedness-review), associated with the Universal Health & Preparedness Review process. 
