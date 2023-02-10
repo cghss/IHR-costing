@@ -7,22 +7,36 @@ All files saved in this subdirectory have the same format and contents as the or
 
 | Directory               | File                              |  Source             | Data last updated
 | :---                    | :---                              | :---                | :--- 
-| countries.tsv           | CIA World Factbook                | CIA World Factbook  | 9 December, 2022
-| oecd                    | country_hospitals.tsv.            | OECD                | 4 July, 2022 (acessed 16 December, 2022)
+| cia_factbook            | countries_cfb.tsv                 | CIA World Factbook  | 9 December, 2022
+| oecd                    | country_hospitals.tsv             | OECD                | 4 July, 2022 (acessed 16 December, 2022)
 | world-bank              | CLASS.xlsx                        | World Bank          | January 2023 (accessed 7 January, 2023)
 | world-bank              | OGHIST.xlsx                       | World Bank          | January 2023 (accessed 7 January, 2023)
 | who                     | medical_doctors_per10000.csv      | WHO                 | 24 January 2022 (accessed 13 January, 2023)
 | who                     | nursing_midwives_per10000.csv     | WHO                 | 8 February 2022 (accessed 13 January, 2023)
 | who                     | chw_count.csv                     | WHO                 | 12 January 2022 (accessed 13 January, 2023)
+| who                     | who_member_states.tsv             | WHO                 | February 2023 (accessed 10 February, 2023, manually extracted)
 
-
-**References**
+**Source, CIA World Facbook**
+*File: countries_cfb.tsv*
 
 CIA World Factbook. Administrative divisions [Internet]. 2022 [cited 2022 Dec 9]. Available from: https://www.cia.gov/the-world-factbook/field/administrative-divisions/
 
+**Source: OECD**
+*File: country_hospitals.tsv*
+
 OECD. Health Care Resources: Hospitals [Internet]. [cited 2022 Dec 16]. Available from: https://stats.oecd.org/index.aspx?queryid=30182
+
+**Source: World Bank**
+*Files: CLASS.xlsx and OGHIST.xlsx*
 
 World Bank. World Bank Country and Lending Groups [Internet]. 2023 [cited 2023 Jan 7]. Available from: https://datahelpdesk.worldbank.org/knowledgebase/articles/906519-world-bank-country-and-lending-groups
 
+**Source: World Health Organization**
+*Files: medical_doctors_per10000.csv, nursing_midwives_per10000.csv, chw_count.csv*
+
 World Health Organization. Global Health Workforce statistics database [Internet]. [cited 2023 Jan 13]. Available from: https://www.who.int/data/gho/data/themes/topics/health-workforce
+
+*File: who_member_states.tsv*
+This file contains information on WHO member-states and corresponding WHO regional offices, where specified. Data were manually extracted from the WHO website as of February 2023. World Health Organization. Countries overview [Internet]. 2023 [cited 2023 Feb 10]. Available from: https://www.who.int/countries
+
 

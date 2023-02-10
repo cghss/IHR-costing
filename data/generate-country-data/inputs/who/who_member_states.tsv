@@ -1,0 +1,274 @@
+iso_3166	who_member_state	who_region
+AFG	TRUE	Eastern Mediterranean Region
+XQZ	FALSE	
+ALB	TRUE	European Region
+DZA	TRUE	African Region
+ASM	FALSE	
+AND	TRUE	European Region
+AGO	TRUE	African Region
+AIA	FALSE	
+ATA	FALSE	
+ATG	TRUE	Region of the Americas
+ARG	TRUE	Region of the Americas
+ARM	TRUE	European Region
+ABW	FALSE	
+XAC	FALSE	
+AUS	TRUE	Western Pacific Region
+AUT	TRUE	European Region
+AZE	TRUE	European Region
+BHS	TRUE	Region of the Americas
+BHR	TRUE	Eastern Mediterranean Region
+XBK	FALSE	
+BGD	TRUE	South-East Asia Region
+BRB	TRUE	Region of the Americas
+BLR	TRUE	European Region
+BEL	TRUE	European Region
+BLZ	TRUE	Region of the Americas
+BEN	TRUE	African Region
+BMU	FALSE	
+BTN	TRUE	South-East Asia Region
+BOL	TRUE	Region of the Americas
+BIH	TRUE	European Region
+BWA	TRUE	African Region
+BVT	FALSE	
+BRA	TRUE	Region of the Americas
+IOT	FALSE	
+VGB	FALSE	
+BRN	TRUE	Western Pacific Region
+BGR	TRUE	European Region
+BFA	TRUE	African Region
+BDI	TRUE	African Region
+CPV	TRUE	African Region
+KHM	TRUE	Western Pacific Region
+CMR	TRUE	African Region
+CAN	TRUE	Region of the Americas
+CYM	FALSE	
+CAF	TRUE	African Region
+TCD	TRUE	African Region
+CHL	TRUE	Region of the Americas
+CHN	TRUE	Western Pacific Region
+CXR	FALSE	
+CPT	FALSE	
+CCK	FALSE	
+COL	TRUE	Region of the Americas
+COM	TRUE	African Region
+COD	TRUE	African Region
+COG	TRUE	African Region
+COK	TRUE	Western Pacific Region
+XCS	FALSE	
+CRI	TRUE	Region of the Americas
+CIV	TRUE	African Region
+HRV	TRUE	European Region
+CUB	TRUE	Region of the Americas
+CUW	FALSE	
+CYP	TRUE	European Region
+CZE	TRUE	
+DNK	TRUE	European Region
+XXD	FALSE	
+DJI	TRUE	Eastern Mediterranean Region
+DMA	TRUE	Region of the Americas
+DOM	TRUE	Region of the Americas
+ECU	TRUE	Region of the Americas
+EGY	TRUE	Eastern Mediterranean Region
+SLV	TRUE	Region of the Americas
+GNQ	TRUE	African Region
+ERI	TRUE	African Region
+EST	TRUE	European Region
+SWZ	TRUE	African Region
+ETH	TRUE	African Region
+	FALSE	
+FLK	FALSE	
+FRO	FALSE	
+FJI	TRUE	Western Pacific Region
+FIN	TRUE	European Region
+FRA	TRUE	European Region
+GF | GUF | 254	FALSE	
+PYF	FALSE	
+ATF	FALSE	
+GAB	TRUE	African Region
+GMB	TRUE	African Region
+XGZ	FALSE	
+GEO	TRUE	European Region
+DEU	TRUE	European Region
+GHA	TRUE	African Region
+GIB	FALSE	
+	FALSE	
+GRC	TRUE	European Region
+GRL	FALSE	
+GRD	TRUE	Region of the Americas
+GP | GLP | 312	FALSE	
+GUM	FALSE	
+GTM	TRUE	Region of the Americas
+GGY	FALSE	
+GIN	TRUE	African Region
+GNB	TRUE	African Region
+GUY	TRUE	Region of the Americas
+HTI	TRUE	Region of the Americas
+HMD	FALSE	
+VAT	FALSE	
+HND	TRUE	Region of the Americas
+HKG	FALSE	
+XHO	FALSE	
+HUN	TRUE	European Region
+ISL	TRUE	European Region
+IND	TRUE	South-East Asia Region
+IDN	TRUE	South-East Asia Region
+IRN	TRUE	Eastern Mediterranean Region
+IRQ	TRUE	Eastern Mediterranean Region
+IRL	TRUE	European Region
+IMN	FALSE	
+ISR	TRUE	European Region
+ITA	TRUE	European Region
+JAM	TRUE	Region of the Americas
+XJM	FALSE	
+JPN	TRUE	Western Pacific Region
+XJV	FALSE	
+JEY	FALSE	
+XJA	FALSE	
+JOR	TRUE	Eastern Mediterranean Region
+	FALSE	
+KAZ	TRUE	European Region
+KEN	TRUE	African Region
+XKR	FALSE	
+KIR	TRUE	Western Pacific Region
+PRK	TRUE	South-East Asia Region
+KOR	TRUE	Western Pacific Region
+XKS	FALSE	
+KWT	TRUE	Eastern Mediterranean Region
+KGZ	TRUE	European Region
+LAO	TRUE	Western Pacific Region
+LVA	TRUE	European Region
+LBN	TRUE	Eastern Mediterranean Region
+LSO	TRUE	African Region
+LBR	TRUE	African Region
+LBY	TRUE	Eastern Mediterranean Region
+LIE	FALSE	
+LTU	TRUE	European Region
+LUX	FALSE	European Region
+MAC	FALSE	
+MDG	TRUE	African Region
+MWI	TRUE	African Region
+MYS	TRUE	Western Pacific Region
+MDV	TRUE	South-East Asia Region
+MLI	TRUE	African Region
+MLT	TRUE	European Region
+MHL	TRUE	Western Pacific Region
+MQ | MTQ | 474	FALSE	
+MRT	TRUE	African Region
+MUS	TRUE	African Region
+	FALSE	
+MEX	TRUE	Region of the Americas
+FSM	TRUE	Western Pacific Region
+XMW	FALSE	
+MDA	TRUE	European Region
+MCO	TRUE	European Region
+MNG	TRUE	Western Pacific Region
+MNE	TRUE	European Region
+MSR	FALSE	
+MAR	TRUE	Eastern Mediterranean Region
+MOZ	TRUE	African Region
+MMR	TRUE	South-East Asia Region
+NAM	TRUE	African Region
+NRU	TRUE	Western Pacific Region
+XNV	FALSE	
+NPL	TRUE	South-East Asia Region
+NLD	TRUE	European Region
+NCL	FALSE	
+NZL	TRUE	Western Pacific Region
+NIC	TRUE	Region of the Americas
+NER	TRUE	African Region
+NGA	TRUE	African Region
+NIU	TRUE	Western Pacific Region
+NFK	FALSE	
+MKD	TRUE	European Region
+MNP	FALSE	
+NOR	TRUE	European Region
+OMN	TRUE	Eastern Mediterranean Region
+PAK	TRUE	Eastern Mediterranean Region
+PLW	TRUE	Western Pacific Region
+XPL	FALSE	
+PAN	TRUE	Region of the Americas
+PNG	TRUE	Western Pacific Region
+XPR	FALSE	
+PRY	TRUE	Region of the Americas
+PER	TRUE	Region of the Americas
+PHL	TRUE	Western Pacific Region
+PCN	FALSE	
+POL	TRUE	European Region
+PRT	TRUE	European Region
+PRI	FALSE	
+QAT	TRUE	Eastern Mediterranean Region
+RE | REU | 638	FALSE	
+ROU	TRUE	European Region
+RUS	TRUE	European Region
+RWA	TRUE	African Region
+BLM	FALSE	
+SHN	FALSE	
+KNA	TRUE	Region of the Americas
+LCA	TRUE	Region of the Americas
+MAF	FALSE	
+SPM	FALSE	
+VCT	TRUE	Region of the Americas
+WSM	TRUE	Western Pacific Region
+SMR	TRUE	European Region
+STP	TRUE	African Region
+SAU	TRUE	Eastern Mediterranean Region
+SEN	TRUE	African Region
+SRB	TRUE	European Region
+SYC	TRUE	African Region
+SLE	TRUE	African Region
+SGP	TRUE	Western Pacific Region
+SXM	FALSE	
+SVK	TRUE	European Region
+SVN	TRUE	European Region
+SLB	TRUE	Western Pacific Region
+SOM	TRUE	Eastern Mediterranean Region
+ZAF	TRUE	African Region
+GS | SGS | 239	FALSE	
+SSD	TRUE	African Region
+ESP	TRUE	European Region
+XSP	FALSE	
+LKA	TRUE	South-East Asia Region
+SDN	TRUE	Eastern Mediterranean Region
+SUR	TRUE	Region of the Americas
+XSV	FALSE	
+SWE	TRUE	European Region
+CHE	TRUE	European Region
+SYR	TRUE	Eastern Mediterranean Region
+TWN	FALSE	
+TJK	TRUE	European Region
+TZA	TRUE	African Region
+THA	TRUE	South-East Asia Region
+TLS	TRUE	South-East Asia Region
+TGO	TRUE	African Region
+TKL	FALSE	
+TON	TRUE	Western Pacific Region
+TTO	TRUE	Region of the Americas
+	FALSE	
+TUN	TRUE	Eastern Mediterranean Region
+TUR	TRUE	European Region
+TKM	TRUE	European Region
+TCA	FALSE	
+TUV	TRUE	Western Pacific Region
+UGA	TRUE	African Region
+UKR	TRUE	European Region
+ARE	TRUE	Eastern Mediterranean Region
+GBR	TRUE	European Region
+USA	TRUE	Region of the Americas
+UM | UMI | 581	FALSE	
+URY	TRUE	Region of the Americas
+UZB	TRUE	European Region
+VUT	TRUE	Western Pacific Region
+VEN	TRUE	Region of the Americas
+VNM	TRUE	Western Pacific Region
+VIR	FALSE	
+	FALSE	
+	FALSE	
+XWK	FALSE	
+WLF	FALSE	
+XWB	FALSE	
+EH | ESH | 732	FALSE	
+	FALSE	
+YEM	TRUE	Eastern Mediterranean Region
+ZMB	TRUE	African Region
+ZWE	TRUE	African Region

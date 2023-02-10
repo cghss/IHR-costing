@@ -15,10 +15,7 @@
 ## example: install.packages("googlesheets4")
 
 ## Load libraries
-library(googlesheets4) ## read data from google sheets: https://googlesheets4.tidyverse.org/
 library(dplyr) ## reshape, reformat, recode data: https://dplyr.tidyverse.org/reference/recode.html
-library(ggplot2) ## for plotting: https://ggplot2.tidyverse.org/
-library(scales) ## for commas on axes of plots
 library(sqldf) ## for writing SQL in r
 
 #############################################
@@ -26,9 +23,13 @@ library(sqldf) ## for writing SQL in r
 #############################################
 
 ## base data from CIA world factbook
-base <- read.delim("data/generate-country-data/inputs/cia_factbook/countries.tsv", header = TRUE)
+base <- read.delim("data/generate-country-data/inputs/cia_factbook/countries_fb.tsv", header = TRUE)
 
+## hospital data from OECD
 hospitals <- read.delim("data/generate-country-data/inputs/oecd/country_hospitals.tsv", header = TRUE)
+
+## WHO membership data from WHO
+who_membership <- read.delim("data/generate-country-data/inputs/who/who_member_states.tsv", header = TRUE)
 
 #############################################
 ## Merge data together ######################
@@ -65,13 +66,42 @@ select
   b.iso_3166 as iso_3166,
   b.stanag_code as stanag_code,
   b.internet_code as internet_code,
+  wm.who_member_state,
+  wm.who_region,
   b.intermediate_area_name as intermediate_area_name,
   b.intermediate_area_count as intermediate_area_count,
   b.intermediate_area_reference as intermediate_area_reference,
   b.cia_factbook_note as cia_factbook_note,
   h.Value as general_hospital_count,
-  ('OECD Health Care Resources: Hospitals Dataset (' || Year || ')') as general_hospital_reference
+  ('OECD Health Care Resources: Hospitals Dataset (' || Year || ')') as general_hospital_reference,
+  NULL as data_team_notes
 from base as b
 left join recent_hospital_count as h
   on b.iso_3166 = h.COU
+  and b.iso_3166 != ''
+left join who_membership as wm
+  on b.iso_3166 = wm.iso_3166
+  and b.iso_3166 != ''
 ")
+
+#############################################
+## Disambiguate Myanmar/Burma ###############
+#############################################
+
+## CIA World Factbook lists both, moving forward standardize as Myanmar based on ISO guidelines
+country_dataset[which(country_dataset$name == "Myanmar"), -which(names(country_dataset) == "name")]  <- country_dataset[which(country_dataset$name == "Burma"), -which(names(country_dataset) == "name")]
+country_dataset[which(country_dataset$name == "Myanmar"),]$data_team_notes <- "'Burma' also noted in CIA World Factbook"
+
+if(any(country_dataset$name == "Burma")){
+  country_dataset <- country_dataset[-which(country_dataset$name == "Burma"),]
+}
+
+#############################################
+## Export data ##############################
+#############################################
+
+write_delim(country_dataset,
+            delim = "\t",
+            file = "data/countries.tsv", 
+            na = "NA")
+

@@ -9,7 +9,7 @@ This directory contains the underlying datasets that power the IHR costing tool.
 | File                    |  Source                                        | Data last updated
 | :---                    | :---                                           | :--- 
 | metrics.tsv             | multiple (see below)                           | 12 January, 2023
-| countries.tsv           | multiple (see generate-country-data)           | 11 December, 2022
+| countries.tsv           | multiple (see generate-country-data)           | 10 February, 2023
 | unit_costs.tsv          | GHSS Research Team                             | 13 January, 2023
 | detailed_costing.tsv    | GHSS Research Team                             | 13 January, 2023
 | line_items.tsv          | GHSS Research Team                             | 13 January, 2022
