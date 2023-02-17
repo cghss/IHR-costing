@@ -76,7 +76,6 @@ ERI	TRUE	African Region
 EST	TRUE	European Region
 SWZ	TRUE	African Region
 ETH	TRUE	African Region
-	FALSE	
 FLK	FALSE	
 FRO	FALSE	
 FJI	TRUE	Western Pacific Region
@@ -92,7 +91,6 @@ GEO	TRUE	European Region
 DEU	TRUE	European Region
 GHA	TRUE	African Region
 GIB	FALSE	
-	FALSE	
 GRC	TRUE	European Region
 GRL	FALSE	
 GRD	TRUE	Region of the Americas
@@ -126,7 +124,6 @@ XJV	FALSE
 JEY	FALSE	
 XJA	FALSE	
 JOR	TRUE	Eastern Mediterranean Region
-	FALSE	
 KAZ	TRUE	European Region
 KEN	TRUE	African Region
 XKR	FALSE	
@@ -144,7 +141,7 @@ LBR	TRUE	African Region
 LBY	TRUE	Eastern Mediterranean Region
 LIE	FALSE	
 LTU	TRUE	European Region
-LUX	FALSE	European Region
+LUX	TRUE	European Region
 MAC	FALSE	
 MDG	TRUE	African Region
 MWI	TRUE	African Region
@@ -156,7 +153,6 @@ MHL	TRUE	Western Pacific Region
 MQ | MTQ | 474	FALSE	
 MRT	TRUE	African Region
 MUS	TRUE	African Region
-	FALSE	
 MEX	TRUE	Region of the Americas
 FSM	TRUE	Western Pacific Region
 XMW	FALSE	
@@ -244,7 +240,6 @@ TGO	TRUE	African Region
 TKL	FALSE	
 TON	TRUE	Western Pacific Region
 TTO	TRUE	Region of the Americas
-	FALSE	
 TUN	TRUE	Eastern Mediterranean Region
 TUR	TRUE	European Region
 TKM	TRUE	European Region
@@ -262,13 +257,10 @@ VUT	TRUE	Western Pacific Region
 VEN	TRUE	Region of the Americas
 VNM	TRUE	Western Pacific Region
 VIR	FALSE	
-	FALSE	
-	FALSE	
 XWK	FALSE	
 WLF	FALSE	
 XWB	FALSE	
 EH | ESH | 732	FALSE	
-	FALSE	
 YEM	TRUE	Eastern Mediterranean Region
 ZMB	TRUE	African Region
 ZWE	TRUE	African Region

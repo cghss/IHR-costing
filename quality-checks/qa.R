@@ -15,7 +15,6 @@
 ## example: install.packages("googlesheets4")
 
 ## Load libraries
-library(googlesheets4) ## read data from google sheets: https://googlesheets4.tidyverse.org/
 library(dplyr) ## reshape, reformat, recode data: https://dplyr.tidyverse.org/reference/recode.html
 library(ggplot2) ## for plotting: https://ggplot2.tidyverse.org/
 library(scales) ## for commas on axes of plots
@@ -84,7 +83,6 @@ stopifnot(
   "Missing JEE attributes" = 
   all(metrics$metrics[which(metrics$score > 1 & metrics$score < 5 & metrics$metric == "JEE (3.0)")] %in% line_items$metrics)
 )
-
 
 #############################################
 ## Field: Requirement #######################

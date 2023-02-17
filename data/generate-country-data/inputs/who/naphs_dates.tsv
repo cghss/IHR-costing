@@ -1,0 +1,109 @@
+WHO Region	Country	JEE (first end date)	NAPHS (first completion date)	NAPHS published	NAPHS line-item costs	Notes
+African	Angola	22-Nov-19	19-Nov-21	FALSE	FALSE	
+African	Benin	26-May-17	27-Apr-18	TRUE	TRUE	NAPHS completed in French
+African	Botswana	8-Dec-17	27-Aug-22	FALSE	FALSE	
+African	Burkina Faso	3-Dec-17	12-Oct-18	FALSE	FALSE	NAPHS completed two separate times: 20-Mar-2020 and 12-Oct-2018
+African	Burundi	11-Mar-18	7-Dec-18	FALSE	FALSE	
+African	Cabo Verde	4-Nov-19	22-Apr-22	FALSE	FALSE	
+African	Cameroon	25-Sep-17	14-Dec-18	FALSE	FALSE	
+African	Central African Republic	26-Nov-18	26-Mar-21	FALSE	FALSE	NAPHS completed two separate times: 15-Dec-2022 and 26-Mar-2021
+African	Chad	7-Aug-17	20-Apr-18	FALSE	FALSE	
+African	Comoros	20-Aug-17	7-Sep-18	FALSE	FALSE	
+African	"Congo, Republic of the"	10-Mar-19	NA	FALSE	FALSE	
+African	Cote dIvoire	5-Dec-16	22-Mar-18	FALSE	FALSE	
+African	"Congo, Democratic Republic of the"	11-Mar-18	17-May-19	FALSE	FALSE	NAPHS completed two separate times: 04-Mar-2022 and 17-May-2019
+African	Eritrea	3-Oct-16	8-Apr-17	TRUE	TRUE	NAPHS completed two separate times: 31-May-2022 and 08-Apr-2017
+African	Ethiopia	29-Feb-16	NA	FALSE	FALSE	
+African	Gabon	1-Jul-19	10-Sep-21	FALSE	FALSE	
+African	Gambia	24-Sep-17	18-Oct-21	FALSE	FALSE	
+African	Ghana	10-Feb-17	22-Jun-18	FALSE	FALSE	
+African	Guinea	23-Apr-17	19-Apr-19	FALSE	FALSE	
+African	Guinea-Bissau	7-Jul-19	19-Dec-21	FALSE	FALSE	
+African	Kenya	27-Feb-17	27-Jul-18	FALSE	FALSE	
+African	Eswatini	8-Apr-18	23-Aug-19	FALSE	FALSE	WHO reports country reported as Swaziland
+African	Lesotho	10-Jul-17	17 Jun 2022/ 13 Sep 2019	FALSE	FALSE	
+African	Liberia	9-Sep-16	30-Nov-17	TRUE	TRUE	
+African	Madagascar	14-Jul-17	NA	FALSE	FALSE	
+African	Malawi	15-Feb-19	19-Feb-20	FALSE	FALSE	
+African	Mali	30-Jun-17	13-Nov-20	FALSE	FALSE	
+African	Mauritania	31-Mar-17	9-Mar-18	FALSE	FALSE	
+African	Mauritius	9-Nov-18	25-Nov-22	FALSE	FALSE	
+African	Mozambique	22-Apr-16	13-Oct-17	FALSE	FALSE	
+African	Namibia	2-Dec-16	2-Nov-17	FALSE	FALSE	
+African	Niger	20-Jul-18	23-Aug-19	FALSE	FALSE	
+African	Nigeria	20-Jun-17	27-Jul-18	TRUE	TRUE	
+African	Rwanda	18-May-18	10-May-19	FALSE	FALSE	NAPHS completed two separate times: 19-Nov-2022 and 10-May-2019
+African	Sao Tome and Principe	17-May-19	NA	FALSE	FALSE	
+African	Senegal	2-Dec-16	14-Sep-17	FALSE	FALSE	
+African	Seychelles	9-Mar-18	NA	FALSE	FALSE	
+African	Sierra Leone	4-Nov-16	10-Nov-17	TRUE	TRUE	
+African	South Africa	1-Dec-17	27-Sep-18	FALSE	FALSE	NAPHS completed two separate times: 27-May-2022 and 27-Sep-2018
+African	South Sudan	20-Oct-17	20-Sep-19	FALSE	FALSE	NAPHS completed two separate times: 14-Aug-2018 and 20-Sep-2019
+African	Togo	20-Apr-18	7-Mar-21	FALSE	FALSE	
+African	Uganda	30-Jun-17	13-Oct-17	TRUE	TRUE	
+African	Tanzania (Zanzibar)	28-Apr-17	22-Jul-18	FALSE	FALSE	
+African	Tanzania	26-Feb-16	18-Nov-16	TRUE	FALSE	"Summary published only, no line-item costs"
+African	Zambia	11-Aug-17	8-Mar-19	FALSE	FALSE	
+African	Zimbabwe	23-Feb-18	22-Feb-19	FALSE	FALSE	
+Eastern Mediterranean	Afghanistan	6-Dec-16	20-Sep-18	TRUE	TRUE	
+Eastern Mediterranean	Bahrain	8-Sep-16	1-Mar-19	FALSE	FALSE	
+Eastern Mediterranean	Djibouti	5-Jul-18	7-Aug-19	FALSE	FALSE	
+Eastern Mediterranean	Egypt	NA	29-Nov-18	FALSE	FALSE	
+Eastern Mediterranean	Iraq	17-Mar-19	20-Mar-19	FALSE	FALSE	
+Eastern Mediterranean	Jordan	1-Sep-16	2-Nov-17	FALSE	FALSE	
+Eastern Mediterranean	Kuwait	18-May-17	25-Sep-18	FALSE	FALSE	
+Eastern Mediterranean	Lebanon	15-Jul-16	28-Jul-17	FALSE	FALSE	
+Eastern Mediterranean	Libya	14-Jul-18	16-Jul-18	FALSE	FALSE	
+Eastern Mediterranean	Morocco	24-Jun-16	23-Jun-17	FALSE	FALSE	
+Eastern Mediterranean	Oman	6-Apr-17	11-Apr-19	FALSE	FALSE	
+Eastern Mediterranean	Pakistan	6-May-16	4-Dec-16	FALSE	FALSE	
+Eastern Mediterranean	Qatar	2-Jun-16	24-Oct-18	FALSE	FALSE	
+Eastern Mediterranean	Saudi Arabia	16-Mar-17	14-Dec-17	FALSE	FALSE	
+Eastern Mediterranean	Somalia	30-Sep-16	28-Aug-18	FALSE	FALSE	
+Eastern Mediterranean	Sudan	13-Oct-16	19-Oct-22	FALSE	FALSE	
+Eastern Mediterranean	Tunisia	2-Dec-16	24-Apr-19	FALSE	FALSE	NAPHS completed two separate times: 01-Jul-2022 and 24-Apr-2019
+Eastern Mediterranean	United Arab Emirates	23-Mar-17	6-Feb-19	FALSE	FALSE	
+European	Albania	9-Sep-16	NA	FALSE	FALSE	
+European	Armenia	19-Aug-16	NA	FALSE	FALSE	
+European	Belgium	23-Jun-17	NA	FALSE	FALSE	
+European	Finland	31-Mar-17	17-Dec-21	FALSE	FALSE	
+European	Georgia	14-Jun-19	NA	FALSE	FALSE	
+European	Montenegro	31-May-19	NA	FALSE	FALSE	
+European	Kyrgyzstan	2-Dec-16	NA	FALSE	FALSE	
+European	Latvia	12-May-17	NA	FALSE	FALSE	
+European	Liechtenstein	3-Nov-17	NA	FALSE	FALSE	
+European	Lithuania	23-Nov-18	NA	FALSE	FALSE	
+European	North Macedonia	15-Mar-19	NA	FALSE	FALSE	"Reported as ""The Former Yugoslav Republic of Macedonia"""
+European	Moldova	5-Oct-18	NA	FALSE	FALSE	"Reported as ""Republic of Moldova"""
+European	Serbia	12-Oct-18	NA	FALSE	FALSE	
+European	Slovenia	9-Jun-17	NA	FALSE	FALSE	
+European	Switzerland	3-Nov-17	NA	FALSE	FALSE	
+European	Tajikistan	25-Oct-19	NA	FALSE	FALSE	
+European	Turkmenistan	10-Jun-16	4-Nov-22	FALSE	FALSE	
+European	Ukraine	NA	23-Sep-22	FALSE	FALSE	"Reports a NAPHS, but the WHO website and JEE dashboard indicate that a JEE was never completed for Ukraine. NAPHS completion date also listed as during the middle of the Russian invasion of the country. "
+Region of the Americas	Canada	20-Jun-18	NA	FALSE	FALSE	
+Region of the Americas	United States of America	27-May-16	1-Oct-18	TRUE	FALSE	
+South-East Asia	Bangladesh	12-May-16	4-Nov-19	FALSE	FALSE	
+South-East Asia	Bhutan	15-Dec-17	1-Mar-19	FALSE	FALSE	
+South-East Asia	Indonesia	24-Nov-17	27-Jul-18	TRUE	FALSE	
+South-East Asia	Maldives	10-Mar-17	1-Jan-18	FALSE	FALSE	
+South-East Asia	Myanmar	9-May-17	15-Sep-17	TRUE	TRUE	
+South-East Asia	Sri Lanka	23-Jun-17	22-Mar-18	TRUE	FALSE	
+South-East Asia	Thailand	30-Jun-17	22-Jun-18	FALSE	FALSE	
+South-East Asia	Timor-Leste	23-Nov-18	28-Jun-19	TRUE	TRUE	
+Western Pacific Region	Australia	1-Dec-17	1-Dec-18	TRUE	FALSE	
+Western Pacific Region	Brunei	1-Nov-19	NA	FALSE	FALSE	"Reported as ""Brunei Darussalam"""
+Western Pacific Region	Cambodia	3-Oct-16	1-Oct-17	FALSE	FALSE	
+Western Pacific Region	China	NA	7-Sep-18	FALSE	FALSE	"Reports a NAPHS, but the WHO website and JEE dashboard indicate that a JEE was never completed for China. "
+Western Pacific Region	Japan	2-Mar-18	NA	FALSE	FALSE	
+Western Pacific Region	Laos	24-Feb-17	1-Nov-17	FALSE	FALSE	"Reported as ""Lao People's Democratic Republic"""
+Western Pacific Region	Malaysia	25-Oct-19	1-Jan-18	FALSE	FALSE	
+Western Pacific Region	Marshall Islands	26-Sep-19	NA	FALSE	FALSE	
+Western Pacific Region	"Micronesia, Federated States of"	17-Aug-18	NA	FALSE	FALSE	
+Western Pacific Region	Mongolia	19-May-17	1-Dec-17	FALSE	FALSE	
+Western Pacific Region	New Zealand	30-Nov-18	NA	FALSE	FALSE	
+Western Pacific Region	Palau	2-Aug-19	NA	FALSE	FALSE	
+Western Pacific Region	Philippines	14-Sep-18	NA	FALSE	FALSE	
+Western Pacific Region	South Korea	2-Sep-17	NA	FALSE	FALSE	"Reported as ""Republic of Korea"""
+Western Pacific Region	Vietnam	6-Nov-16	22-Feb-19	FALSE	FALSE	
+Western Pacific Region	Singapore	20-Apr-18	NA	FALSE	FALSE	

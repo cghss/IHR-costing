@@ -31,6 +31,17 @@ hospitals <- read.delim("data/generate-country-data/inputs/oecd/country_hospital
 ## WHO membership data from WHO
 who_membership <- read.delim("data/generate-country-data/inputs/who/who_member_states.tsv", header = TRUE)
 
+## NAPHS dates and data reporting from WHO
+naphs_dates <- read.delim("data/generate-country-data/inputs/who/naphs_dates.tsv", header = TRUE)
+
+#############################################
+## Process individual datasets ##############
+#############################################
+
+if(any(base$name == "United States")){
+  base[which(base$name == "United States"),]$name <- "United States of America"
+}
+
 #############################################
 ## Merge data together ######################
 #############################################
@@ -82,6 +93,9 @@ left join recent_hospital_count as h
 left join who_membership as wm
   on b.iso_3166 = wm.iso_3166
   and b.iso_3166 != ''
+left join naphs_dates as nd 
+  on b.name = nd.Country
+  and nd.Country != 'Tanzania (Zanzibar)' /* excluded */
 ")
 
 #############################################
@@ -97,10 +111,19 @@ if(any(country_dataset$name == "Burma")){
 }
 
 #############################################
+## Q/A ######################################
+#############################################
+
+sum(country_dataset$who_member_state, na.rm = TRUE)
+
+country_dataset[which(is.na(country_dataset$who_member_state)),]$name
+country_dataset[which(country_dataset$who_member_state == "FALSE"),]$name
+
+#############################################
 ## Export data ##############################
 #############################################
 
-write_delim(country_dataset,
+write_delim(country_dataset[which(country_dataset$who_member_state == TRUE),],
             delim = "\t",
             file = "data/countries.tsv", 
             na = "NA")
