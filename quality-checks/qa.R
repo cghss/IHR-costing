@@ -64,6 +64,27 @@ stopifnot(
     all(metrics$indicator[which(metrics$metric == "JEE (3.0)")] %in% line_items$indicator)
 )
 
+## are all metrics that are intended included in the metrics spreadsheet?
+stopifnot(
+  "Missing metric data for JEE 1.0" = 
+  "JEE (1.0)" %in% unique(metrics$metric)
+)
+
+stopifnot(
+  "Missing metric data for JEE 3.0" = 
+    "JEE (3.0)" %in% unique(metrics$metric)
+)
+
+stopifnot(
+  "Missing metric data for SPAR 2.0" = 
+    "SPAR (2.0)" %in% unique(metrics$metric)
+)
+
+stopifnot(
+  "Missing metric data for Health Emergency Preparedness, Response and Resilience (HEPR)" = 
+    "Health Emergency Preparedness, Response and Resilience (HEPR)" %in% unique(metrics$metric)
+)
+
 #############################################
 ## Field: Score #############################
 #############################################
