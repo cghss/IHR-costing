@@ -17,6 +17,7 @@
 ## Load libraries
 library(dplyr) ## reshape, reformat, recode data: https://dplyr.tidyverse.org/reference/recode.html
 library(sqldf) ## for writing SQL in r
+library(readr) ## for write_delim
 
 #############################################
 ## Read in data #############################
@@ -27,6 +28,10 @@ base <- read.delim("data/generate-country-data/inputs/cia_factbook/countries_fb.
 
 ## hospital data from OECD
 hospitals <- read.delim("data/generate-country-data/inputs/oecd/country_hospitals.tsv", header = TRUE)
+
+## TODO: look into flag codes in this dataset
+## utilization data from OECD
+utilization <- read.csv("data/generate-country-data/inputs/oecd/utilization_dataset.csv", header = TRUE)
 
 ## WHO membership data from WHO
 who_membership <- read.delim("data/generate-country-data/inputs/who/who_member_states.tsv", header = TRUE)
@@ -70,6 +75,30 @@ on h.COU = r.COU
 and h.Year = r.latest_year
 and h.Variable = 'General hospitals'
 and h.Measure = 'Number'
+),
+
+/* identify the most recent utilization data */
+recent_utilization as (
+select 
+  u.LOCATION,
+  u.TIME,
+  u.Value
+from utilization as u
+join (
+  select 
+    LOCATION,
+    max(TIME) as latest_year
+  from utilization
+  where 
+    SUBJECT = 'TOT'
+    and MEASURE = 'CAP'
+  group by 
+    LOCATION
+) as r
+on u.LOCATION = r.LOCATION
+and u.TIME = r.latest_year
+and u.SUBJECT = 'TOT'
+and u.MEASURE = 'CAP'
 )
 
 select 
@@ -85,11 +114,15 @@ select
   b.cia_factbook_note as cia_factbook_note,
   h.Value as general_hospital_count,
   ('OECD Health Care Resources: Hospitals Dataset (' || Year || ')') as general_hospital_reference,
+  u.Value as doctor_consultations_per_capita,
+  ('OECD Health Care Utilization: Doctors consultations Dataset (' || TIME || ')') as doctors_consultation_reference,
   NULL as data_team_notes
 from base as b
 left join recent_hospital_count as h
   on b.iso_3166 = h.COU
   and b.iso_3166 != ''
+left join recent_utilization as u
+  on b.iso_3166 = u.LOCATION
 left join who_membership as wm
   on b.iso_3166 = wm.iso_3166
   and b.iso_3166 != ''
