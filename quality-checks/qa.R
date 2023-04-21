@@ -12,7 +12,7 @@
 #############################################
 
 ## NOTE: if you don't already have these libraries installed, you can do so by running install.packages()
-## example: install.packages("googlesheets4")
+## example: install.packages("dplyr")
 
 ## Load libraries
 library(dplyr) ## reshape, reformat, recode data: https://dplyr.tidyverse.org/reference/recode.html
@@ -48,20 +48,32 @@ line_items$custom_multiplier_2 <- as.numeric(as.character(line_items$custom_mult
 line_items$custom_multiplier_1[which(is.na(line_items$custom_multiplier_1))] <- 1
 line_items$custom_multiplier_2[which(is.na(line_items$custom_multiplier_2))] <- 1
 
-#############################################
-## Field: Indicator #########################
-#############################################
+#Add field with just JEE 3 indicator
+  a <- strsplit(line_items$metric_ids, ",")
+  b <- lapply(a, function(x) return(ifelse(grepl("JEE3", x), x, NA)))
+  c <- unlist(lapply(b, function(x) ifelse(all(is.na(x)), "NA", x[which(complete.cases(x))])))
+line_items$metric_id_jee3 <- c; rm(a); rm(b); rm(c)
 
-## Do all rows in line_items have an indicator?
-stopifnot(
-  "Not all lines have a specified indicator" = 
-  all(complete.cases(line_items$indicator))
-  )
+#Add field with just SPAR indicator
+a <- strsplit(line_items$metric_ids, ",")
+b <- lapply(a, function(x) return(ifelse(grepl("SPAR", x), x, NA)))
+c <- unlist(lapply(b, function(x) ifelse(all(is.na(x)), "NA", x[which(complete.cases(x))])))
+line_items$metric_id_spar <- c; rm(a); rm(b); rm(c)
+
+#Add field with just HEPR indicator
+a <- strsplit(line_items$metric_ids, ",")
+b <- lapply(a, function(x) return(ifelse(grepl("HEPR", x), x, NA)))
+c <- unlist(lapply(b, function(x) ifelse(all(is.na(x)), "NA", x[which(complete.cases(x))])))
+line_items$metric_id_hepr <- c; rm(a); rm(b); rm(c)
+
+#############################################
+## Field: Metric ID #########################
+#############################################
 
 ## do all indicators of the JEE have at least one row in line_items? (except scores of 1 and 5)?
 stopifnot(
   "Missing JEE indicators" = 
-    all(metrics$indicator[which(metrics$metric == "JEE (3.0)")] %in% line_items$indicator)
+    all(metrics$metric_id[which(metrics$metric == "JEE (3.0)")] %in% line_items$metric_id_jee3)
 )
 
 ## are all metrics that are intended included in the metrics spreadsheet?
