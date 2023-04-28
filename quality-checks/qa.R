@@ -158,6 +158,9 @@ stopifnot(
     all(line_items$administrative_level %in% c("Health facility", "Population", "Local", "Intermediate", "National", "Additional HWC/per 1000 population", "PoE"))
 )
 
+## troubleshoot if error
+#unique(line_items$administrative_level)
+
 #############################################
 ## Field: Optional cost #####################
 #############################################
@@ -167,6 +170,9 @@ stopifnot(
   "Select line item not indicated as an optional cost or not" = 
     all(line_items$optional_cost %in% c("TRUE", "FALSE"))
 )
+
+## troubleshoot if you see an error above
+
 
 #############################################
 ## Explore most expensive unit costs ########
