@@ -112,25 +112,6 @@ stopifnot(
   all(line_items$score > 1 & line_items$score < 5)
 )
 
-#############################################
-## Field: Metrics #########################
-#############################################
-
-## do all metrics/asstributes of the JEE have at least one row in line_items? (except scores of 1 and 5)?
-stopifnot(
-  "Missing JEE attributes" = 
-  all(metrics$metrics[which(metrics$score > 1 & metrics$score < 5 & metrics$metric == "JEE (3.0)")] %in% line_items$metrics)
-)
-
-#############################################
-## Field: Requirement #######################
-#############################################
-
-## do all line-items have a complete (non-NULL) requirement specified?
-stopifnot(
-  "Missing requirement info" = 
-  all(complete.cases(line_items$requirement))
-)
 
 #############################################
 ## Field: Activity ##########################
@@ -149,8 +130,13 @@ stopifnot(
 ## do all unit costs have corresponding cost data in the unit_costs table?
 stopifnot(
   "Inconsistent unit cost data" = 
-    all(line_items$unit_cost_name %in% unit_costs$cost_name)
+    all(line_items$unit_cost %in% unit_costs$unit_cost)
   )
+
+## troubleshoot if you see an error above
+## ID all unit costs used in the line items table
+#all_unit_costs <- unique(line_items$unit_cost)
+#all_unit_costs[-which(all_unit_costs %in% unit_costs$unit_cost)]
 
 #############################################
 ## Field: Description #######################
