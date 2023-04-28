@@ -1,4 +1,4 @@
-metric_id	metric	pillar	capacity	indicator	score_numeric	score_text	attribute
+metric_id	framework	pillar	capacity	indicator	score_numeric	score_text	attribute
 JEE3.P1.1.1	JEE (3.0)	Prevent	P1. Legal Instruments	P1.1. Legal instruments	1	No capacity	The country has not conducted legal mapping of relevant legal instruments for IHR implementation
 JEE3.P1.1.2	JEE (3.0)	Prevent	P1. Legal Instruments	P1.1. Legal instruments	2	Limited capacity	"The country has conducted a legal mapping of relevant legal instruments for IHR implementation at the national and intermediate levels and documented, where applicable"
 JEE3.P1.1.3	JEE (3.0)	Prevent	P1. Legal Instruments	P1.1. Legal instruments	3	Developed capacity	"The country has conducted a legal analysis (legal mapping and legal assessment) and identified and reviewed gaps in the health sector and developed and/or revised the necessary legal instruments for IHR implementation at the national and intermediate levels, where applicable"

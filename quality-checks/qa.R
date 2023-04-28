@@ -95,33 +95,33 @@ line_items$metric_id_hepr <- c; rm(a); rm(b); rm(c)
 ## do all indicators of the JEE have at least one row in line_items? (except scores of 1 and 5)?
 stopifnot(
   "Missing JEE indicators" = 
-    all(metrics$metric_id[which(metrics$metric == "JEE (3.0)" & metrics$score_numeric %in% c(2,3,4))] %in% line_items$metric_id_jee3)
+    all(metrics$metric_id[which(metrics$framework == "JEE (3.0)" & metrics$score_numeric %in% c(2,3,4))] %in% line_items$metric_id_jee3)
 )
 
 ## troubleshoot if you see an error above
 ## ID all unique JEE metrics in metrics table, then see which aren't in the line items list of JEE metrics
-#all_jee_metrics <- unique(metrics$metric_id[which(metrics$metric == "JEE (3.0)" & metrics$score_numeric %in% c(2,3,4))])
+#all_jee_metrics <- unique(metrics$metric_id[which(metrics$framework == "JEE (3.0)" & metrics$score_numeric %in% c(2,3,4))])
 #all_jee_metrics[-which(all_jee_metrics %in% line_items$metric_id_jee3)]
 
 ## are all metrics that are intended included in the metrics spreadsheet?
 stopifnot(
   "Missing metric data for JEE 1.0" = 
-  "JEE (1.0)" %in% unique(metrics$metric)
+  "JEE (1.0)" %in% unique(metrics$framework)
 )
 
 stopifnot(
   "Missing metric data for JEE 3.0" = 
-    "JEE (3.0)" %in% unique(metrics$metric)
+    "JEE (3.0)" %in% unique(metrics$framework)
 )
 
 stopifnot(
   "Missing metric data for SPAR 2.0" = 
-    "SPAR (2.0)" %in% unique(metrics$metric)
+    "SPAR (2.0)" %in% unique(metrics$framework)
 )
 
 stopifnot(
   "Missing metric data for Health Emergency Preparedness, Response and Resilience (HEPR)" = 
-    "Health Emergency Preparedness, Response and Resilience (HEPR)" %in% unique(metrics$metric)
+    "Health Emergency Preparedness, Response and Resilience (HEPR)" %in% unique(metrics$framework)
 )
 
 #############################################
@@ -270,7 +270,7 @@ dev.off()
 a <- line_items %>%
   filter(complete.cases(metric_id_jee3) & metric_id_jee3 != "NA") %>%
   left_join(unit_costs, by = "unit_cost") %>%
-  left_join((metrics %>% filter(metrics$metric == "JEE (3.0)") %>% select(c(metric_id, metric, pillar))),
+  left_join((metrics %>% filter(metrics$framework == "JEE (3.0)") %>% select(c(metric_id, framework, pillar))),
             by = join_by(metric_id_jee3 == metric_id)) %>%
   bind_cols(countries %>% filter(name == "United States of America")) %>%
   mutate(administrative_level_multiplier = 
