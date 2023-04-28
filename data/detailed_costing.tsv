@@ -1,4 +1,4 @@
-Cost name	Cost subcategory	Item	Units	Unit cost	Default value (2022 USD)	Reference	URL
+unit_cost	cost_subcategory	item	units	cost_per_unit	default_value	reference	url
 Epidemiology training consumables	N/A	Cellular phone with key contacts	1	"$1,020.00 "	"$1,020.00 "	CDC Field Epidemiology Training Module; Based on a 12 month plan with 6gb data and 150 voice minutes. 	https://www.mtn.ng/device-financing/
 Epidemiology training consumables	N/A	"Laptop computers with appropriate software (e.g., Epi Info, SAS, or R)"	1	$900.00 	$900.00 	CDC Field Epidemiology Training Module; MS Office $320 + average laptop $580. Rounded	https://www.microsoft.com/en-ng/microsoft-365/p/office-home-business-2021/cfq7ttc0hpn4 https://www.ocity.ng/laptop-prices-in-nigeria/
 Epidemiology training consumables	N/A	Digital camera	1	$119.99 	$119.99 	"CDC Field Epidemiology Training Module; Cost of a small waterproof digital camera, for example,  Minolta MN30WP 21 MP / 1080P HD Waterproof Digital Camera (Teal) "	https://www.amazon.com/Minolta-MN30WP-Waterproof-Digital-Camera/dp/B0B5FJ8CZD/ref=sr_1_16

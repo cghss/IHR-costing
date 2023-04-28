@@ -26,6 +26,7 @@ CIA World Factbook. Administrative divisions [Internet]. 2022 [cited 2022 Dec 9]
 *Files: country_hospitals.tsv and utilization_dataset.csv*
 
 OECD. Health Care Resources: Hospitals [Internet]. [cited 2022 Dec 16]. Available from: https://stats.oecd.org/index.aspx?queryid=30182
+OECD and (WHO)[https://gateway.euro.who.int/en/indicators/hlthres_66-general-hospitals-total/] define general hospitals as "licensed establishments primarily engaged in providing general diagnostic and medical treatment (both surgical and non-surgical) to inpatients with a wide variety of medical conditions."
 
 OECD. Doctors' consultations (indicator) [Internet]. doi: 10.1787/173dcf26-en. [cited 2023 April 14] (Accessed on 14 April 2023). Available from: https://data.oecd.org/healthcare/doctors-consultations.htm
 	From OECD: "This indicator presents data on the number of consultations patients have with doctors in a given year. Consultations with doctors can take place in doctors’ offices or clinics, in hospital outpatient departments or, in some cases, in patients’ own homes. Consultations with doctors refer to the number of contacts with physicians, both generalists and specialists. There are variations across countries in the coverage of different types of consultations, notably in outpatient departments of hospitals. The data come from administrative sources or surveys, depending on the country. This indicator is measured per capita."
