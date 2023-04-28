@@ -69,7 +69,6 @@ b <- lapply(a, function(x) return(ifelse(grepl("HEPR", x), x, NA)))
 c <- unlist(lapply(b, function(x) ifelse(all(is.na(x)), "NA", x[which(complete.cases(x))])))
 line_items$metric_id_hepr <- c; rm(a); rm(b); rm(c)
 
-
 #######################################################
 ## Check for non-allowable characters #################
 #######################################################
@@ -134,7 +133,6 @@ stopifnot(
   all(line_items$score > 1 & line_items$score < 5)
 )
 
-
 #############################################
 ## Field: Activity ##########################
 #############################################
@@ -144,6 +142,20 @@ stopifnot(
   "Missing activity info" = 
     all(complete.cases(line_items$activity))
 )
+
+#############################################
+## Field: Line-item ID ######################
+#############################################
+
+## are all line-item ids unique?
+stopifnot(
+  "Duplicate line-item IDs" = 
+    length(unique(line_items$line_item_id)) == length(line_items$line_item_id)
+)
+
+## troubleshoot if you see an error above
+## find duplicate line item ids
+line_items[which(duplicated(line_items$line_item_id)),]$line_item_id
 
 #############################################
 ## Field: Unit cost #########################
