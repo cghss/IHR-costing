@@ -172,7 +172,7 @@ stopifnot(
 )
 
 ## troubleshoot if you see an error above
-
+#unique(line_items$optional_cost)
 
 #############################################
 ## Explore most expensive unit costs ########
