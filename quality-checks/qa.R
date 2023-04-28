@@ -48,6 +48,9 @@ line_items$custom_multiplier_2 <- as.numeric(as.character(line_items$custom_mult
 line_items$custom_multiplier_1[which(is.na(line_items$custom_multiplier_1))] <- 1
 line_items$custom_multiplier_2[which(is.na(line_items$custom_multiplier_2))] <- 1
 
+## format all default unit costs as numeric cariables
+unit_costs$default_value <- as.numeric(as.character(unit_costs$default_value))
+
 #Add field with just JEE 3 indicator
   a <- strsplit(line_items$metric_ids, ",")
   b <- lapply(a, function(x) return(ifelse(grepl("JEE3", x), x, NA)))
@@ -65,6 +68,25 @@ a <- strsplit(line_items$metric_ids, ",")
 b <- lapply(a, function(x) return(ifelse(grepl("HEPR", x), x, NA)))
 c <- unlist(lapply(b, function(x) ifelse(all(is.na(x)), "NA", x[which(complete.cases(x))])))
 line_items$metric_id_hepr <- c; rm(a); rm(b); rm(c)
+
+
+#######################################################
+## Check for non-allowable characters #################
+#######################################################
+
+## run as a one-off function
+# ## https://stackoverflow.com/questions/4993837/r-invalid-multibyte-string
+# ## function shared on stackoverflow by R.N.
+# find_offending_character <- function(x, maxStringLength=256){  
+#   print(x)
+#   for (c in 1:maxStringLength){
+#     offendingChar <- substr(x,c,c)
+#     #print(offendingChar) #uncomment if you want the indiv characters printed
+#     #the next character is the offending multibyte Character
+#   }    
+# }
+# 
+# errors(lapply(line_items$activity, find_offending_character))
 
 #############################################
 ## Field: Metric ID #########################
@@ -138,6 +160,15 @@ stopifnot(
 #all_unit_costs <- unique(line_items$unit_cost)
 #all_unit_costs[-which(all_unit_costs %in% unit_costs$unit_cost)]
 
+## do all unit costs have default values?
+stopifnot(
+  "Missing default unit cost data" = 
+    all(complete.cases(unit_costs$default_value))
+)
+
+## troubleshoot if you see an error above
+#unit_costs[which(is.na(unit_costs$default_value)),]$unit_cost
+
 #############################################
 ## Field: Description #######################
 #############################################
@@ -179,6 +210,7 @@ stopifnot(
 ## Does this pass the sniff test? ###########
 #############################################
 
+png("quality-checks/qa-figures/top_unit_costs.png", width = 8, height = 6, units = "in", res = 1200)
 unit_costs %>%
   arrange(desc(default_value)) %>%
   top_n(30) %>%
@@ -186,7 +218,7 @@ unit_costs %>%
              y = factor(unit_cost, levels = rev(unit_cost)),
              fill = category_sloan)) + ## factor coercion keeps order specified in arrange, since I want the barplot sorted
   geom_bar(stat = "identity", color = "black") +
-  xlab("Default Cost (2022 USD)") +
+  xlab("Default Cost (2022 USD)\nlog scale") +
   ylab("") +
   labs(caption = "", fill = "Cost category") +
   theme_minimal() + 
@@ -195,12 +227,14 @@ unit_costs %>%
   scale_x_log10(breaks = trans_breaks("log10", function(x) 10^x),
                 labels = trans_format("log10", math_format(10^.x))) +
   ggtitle("Most expensive unit costs")
+dev.off()
 
 #############################################
 ## Explore which unit costs are used ########
 ## the most times in line_item costs ########
 #############################################
 
+png("quality-checks/qa-figures/most_frequent_unit_costs.png", width = 8, height = 6, units = "in", res = 1200)
 line_items %>%
   left_join(unit_costs, by = "unit_cost") %>%
   group_by(category_sloan, unit_cost) %>%
@@ -221,6 +255,7 @@ line_items %>%
   theme_minimal() + 
   theme(plot.caption = element_text(size = 7), legend.position = "bottom") +
   ggtitle("Most frequently used line-item costs")
+dev.off()
 
 #############################################
 ## Explore costs for all items/attributes ###
@@ -233,11 +268,11 @@ line_items %>%
 ## then all recurring costs costed each year after that
 ## lets us look across all items but not intended to be analyzed over time
 a <- line_items %>%
+  filter(complete.cases(metric_id_jee3) & metric_id_jee3 != "NA") %>%
   left_join(unit_costs, by = "unit_cost") %>%
-  left_join(metrics %>% 
-              filter(metrics$metric == "JEE (3.0)") %>% 
-              select(c(metric_id, metric, pillar)), by = "metric_id") %>%
-  bind_cols(countries %>% filter(name == "United States")) %>%
+  left_join((metrics %>% filter(metrics$metric == "JEE (3.0)") %>% select(c(metric_id, metric, pillar))),
+            by = join_by(metric_id_jee3 == metric_id)) %>%
+  bind_cols(countries %>% filter(name == "United States of America")) %>%
   mutate(administrative_level_multiplier = 
         as.numeric(as.character(
              ifelse(administrative_level == "National", 1,
@@ -249,7 +284,7 @@ a <- line_items %>%
              ifelse(administrative_level == "Additional HWC/per 1000 population", 0, 
              ifelse(administrative_level == "PoE", 5, ## todo pick number
              ifelse(administrative_level == "Population", 333287557,  ## https://www.census.gov/newsroom/press-releases/2022/2022-population-estimates.html
-             "error"))))))))) %>%
+             "error")))))))))) %>%
   mutate(y1cost = default_value*custom_multiplier_1*custom_multiplier_2*administrative_level_multiplier) %>%
   mutate(y2cost = ifelse(cost_type == "One-time", 0, default_value*custom_multiplier_1*custom_multiplier_2*administrative_level_multiplier)) %>%
   mutate(y3cost = ifelse(cost_type == "One-time", 0, default_value*custom_multiplier_1*custom_multiplier_2*administrative_level_multiplier)) %>%
@@ -262,12 +297,3 @@ a %>%
           vSize = "cost_5yrs",
           fontsize.labels = 1,
           vColor = "pillar")                    
-           
-
-#######################################################
-## Appendix: Calculate grouped unit costs #############
-#######################################################
-
-unit_costs_grouped %>%
-  group_by(cost_name, category_sloan) %>%
-  summarize(total = sum(value))
