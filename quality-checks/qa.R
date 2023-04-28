@@ -73,8 +73,13 @@ line_items$metric_id_hepr <- c; rm(a); rm(b); rm(c)
 ## do all indicators of the JEE have at least one row in line_items? (except scores of 1 and 5)?
 stopifnot(
   "Missing JEE indicators" = 
-    all(metrics$metric_id[which(metrics$metric == "JEE (3.0)")] %in% line_items$metric_id_jee3)
+    all(metrics$metric_id[which(metrics$metric == "JEE (3.0)" & metrics$score_numeric %in% c(2,3,4))] %in% line_items$metric_id_jee3)
 )
+
+## troubleshoot if you see an error above
+## ID all unique JEE metrics in metrics table, then see which aren't in the line items list of JEE metrics
+#all_jee_metrics <- unique(metrics$metric_id[which(metrics$metric == "JEE (3.0)" & metrics$score_numeric %in% c(2,3,4))])
+#all_jee_metrics[-which(all_jee_metrics %in% line_items$metric_id_jee3)]
 
 ## are all metrics that are intended included in the metrics spreadsheet?
 stopifnot(
