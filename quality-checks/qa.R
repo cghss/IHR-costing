@@ -18,6 +18,7 @@
 library(dplyr) ## reshape, reformat, recode data: https://dplyr.tidyverse.org/reference/recode.html
 library(ggplot2) ## for plotting: https://ggplot2.tidyverse.org/
 library(scales) ## for commas on axes of plots
+library(treemap) ## for treemap visual
 
 #############################################
 ## Read in data #############################
@@ -76,13 +77,13 @@ unit_costs$default_value <- as.numeric(as.character(unit_costs$default_value))
 ## do all indicators of the JEE have at least one row in line_items? (except scores of 1 and 5)?
 stopifnot(
   "Missing JEE indicators" = 
-    all(metrics$metric_id[which(metrics$framework == "JEE (3.0)" & metrics$score_numeric %in% c(2,3,4))] %in% line_items$metric_id_jee3)
+    all(metrics$metric_id[which(metrics$framework == "JEE (3.0)" & metrics$score_numeric %in% c(2,3,4))] %in% line_items$jee3_metric_id)
 )
 
 ## troubleshoot if you see an error above
 ## ID all unique JEE metrics in metrics table, then see which aren't in the line items list of JEE metrics
 #all_jee_metrics <- unique(metrics$metric_id[which(metrics$framework == "JEE (3.0)" & metrics$score_numeric %in% c(2,3,4))])
-#all_jee_metrics[-which(all_jee_metrics %in% line_items$metric_id_jee3)]
+#all_jee_metrics[-which(all_jee_metrics %in% line_items$jee3_metric_id)]
 
 ## are all metrics that are intended included in the metrics spreadsheet?
 stopifnot(
@@ -137,7 +138,7 @@ stopifnot(
 
 ## troubleshoot if you see an error above
 ## find duplicate line item ids
-line_items[which(duplicated(line_items$line_item_id)),]$line_item_id
+#line_items[which(duplicated(line_items$line_item_id)),]$line_item_id
 
 #############################################
 ## Field: Unit cost #########################
@@ -256,16 +257,18 @@ dev.off()
 ## for a selected country ###################
 #############################################
 
-## don't use these data to look year over year
+## caveat: don't use these data to look year over year
 ## assumes no capacity at baseline
 ## everything one-time costed in year 1 (that's not how it would happen, actually)
 ## then all recurring costs costed each year after that
 ## lets us look across all items but not intended to be analyzed over time
-a <- line_items %>%
-  filter(complete.cases(metric_id_jee3) & metric_id_jee3 != "NA") %>%
+
+png("quality-checks/qa-figures/example_treemap.png", width = 8, height = 6, units = "in", res = 1200)
+line_items %>%
+  filter(complete.cases(jee3_metric_id) & jee3_metric_id != "NA") %>%
   left_join(unit_costs, by = "unit_cost") %>%
   left_join((metrics %>% filter(metrics$framework == "JEE (3.0)") %>% select(c(metric_id, framework, pillar))),
-            by = join_by(metric_id_jee3 == metric_id)) %>%
+            by = join_by(jee3_metric_id == metric_id)) %>%
   bind_cols(countries %>% filter(name == "United States of America")) %>%
   mutate(administrative_level_multiplier = 
         as.numeric(as.character(
@@ -275,19 +278,18 @@ a <- line_items %>%
              ifelse(administrative_level == "Local", (3006 + 14 + 11  + 1 + 64 + 4 + 1 + 41), ## https://www2.census.gov/geo/pdfs/reference/GARM/Ch4GARM.pdf (exclude yellowstone)    
              ## Look at community hospitals, https://www.aha.org/statistics/fast-facts-us-hospitals, assume 50% of hospitals participate in IHR related activities
              ifelse(administrative_level == "Health facility", 5139/.5, 
-             ifelse(administrative_level == "Additional HWC/per 1000 population", 0, 
              ifelse(administrative_level == "PoE", 5, ## todo pick number
              ifelse(administrative_level == "Population", 333287557,  ## https://www.census.gov/newsroom/press-releases/2022/2022-population-estimates.html
-             "error")))))))))) %>%
+             "error"))))))))) %>%
   mutate(y1cost = default_value*custom_multiplier_1*custom_multiplier_2*administrative_level_multiplier) %>%
   mutate(y2cost = ifelse(cost_type == "One-time", 0, default_value*custom_multiplier_1*custom_multiplier_2*administrative_level_multiplier)) %>%
   mutate(y3cost = ifelse(cost_type == "One-time", 0, default_value*custom_multiplier_1*custom_multiplier_2*administrative_level_multiplier)) %>%
   mutate(y4cost = ifelse(cost_type == "One-time", 0, default_value*custom_multiplier_1*custom_multiplier_2*administrative_level_multiplier)) %>%
   mutate(y5cost = ifelse(cost_type == "One-time", 0, default_value*custom_multiplier_1*custom_multiplier_2*administrative_level_multiplier)) %>%
-  mutate(cost_5yrs = y1cost + y2cost + y3cost + y4cost + y5cost) 
-                       
-a %>% 
-  treemap(index = c("pillar", "activity"),
+  mutate(cost_5yrs = y1cost + y2cost + y3cost + y4cost + y5cost) %>%
+treemap(index = c("pillar", "activity"),
           vSize = "cost_5yrs",
-          fontsize.labels = 1,
-          vColor = "pillar")                    
+          #fontsize.labels = 1,
+          title = NA,
+          vColor = "pillar")     
+dev.off()
