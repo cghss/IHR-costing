@@ -26,6 +26,12 @@ library(readr) ## for write_delim
 ## base data from CIA world factbook
 base <- read.delim("data/generate-country-data/inputs/cia_factbook/countries_fb.tsv", header = TRUE)
 
+## WHO membership data from WHO
+who_membership <- read.delim("data/generate-country-data/inputs/who/who_member_states.tsv", header = TRUE)
+
+## NAPHS dates and data reporting from WHO
+naphs_dates <- read.delim("data/generate-country-data/inputs/who/naphs_dates.tsv", header = TRUE)
+
 ## hospital data from OECD
 hospitals <- read.delim("data/generate-country-data/inputs/oecd/country_hospitals.tsv", header = TRUE)
 
@@ -33,14 +39,18 @@ hospitals <- read.delim("data/generate-country-data/inputs/oecd/country_hospital
 ## utilization data from OECD
 utilization <- read.csv("data/generate-country-data/inputs/oecd/utilization_dataset.csv", header = TRUE)
 
-## WHO membership data from WHO
-who_membership <- read.delim("data/generate-country-data/inputs/who/who_member_states.tsv", header = TRUE)
+## MD dataset from WHO
+md <- read.csv("data/generate-country-data/inputs/who/medical_doctors_per10000.csv", header = TRUE)
 
-## NAPHS dates and data reporting from WHO
-naphs_dates <- read.delim("data/generate-country-data/inputs/who/naphs_dates.tsv", header = TRUE)
+## nurse/midwife dataset from WHO
+nurse_midwife <- read.csv("data/generate-country-data/inputs/who/ursing_midwives_per10000.csv", header = TRUE)
+
+## CHW dataset from WHO
+chw <- read.csv("data/generate-country-data/inputs/who/chw_count.csv", header = TRUE)
 
 #############################################
-## Process individual datasets ##############
+## Process individual datasets: #############
+## base dataset ############################# 
 #############################################
 
 if(any(base$name == "United States")){
@@ -116,6 +126,10 @@ select
   ('OECD Health Care Resources: Hospitals Dataset (' || Year || ')') as general_hospital_reference,
   u.Value as doctor_consultations_per_capita,
   ('OECD Health Care Utilization: Doctors consultations Dataset (' || TIME || ')') as doctors_consultation_reference,
+  md.FactValueNumeric as mds_per_10000capita,
+  ('WHO Global Health Workforce statistics database (' || md.Period || ')') as mds_per_10000capita_reference,
+  nm.FactValueNumeric as nurses_midwives_per_10000capita,
+  ('WHO Global Health Workforce statistics database (' || nm.Period || ')') as nurses_midwives_per_10000capita,
   NULL as data_team_notes
 from base as b
 left join recent_hospital_count as h
@@ -123,6 +137,14 @@ left join recent_hospital_count as h
   and b.iso_3166 != ''
 left join recent_utilization as u
   on b.iso_3166 = u.LOCATION
+left join md 
+  on b.iso_3166 = md.SpatialDimValueCode
+  and md.IsLatestYear = TRUE
+  and md.indicator = 'Medical doctors (per 10,000)'
+left join nurse_midwife as nm
+  on b.iso_3166 = nm.SpatialDimValueCode
+  and nm.IsLatestYear = 'true'
+  and nm.indicator = 'Nursing and midwifery personnel (per 10,000)'
 left join who_membership as wm
   on b.iso_3166 = wm.iso_3166
   and b.iso_3166 != ''
@@ -151,6 +173,8 @@ sum(country_dataset$who_member_state, na.rm = TRUE)
 
 country_dataset[which(is.na(country_dataset$who_member_state)),]$name
 country_dataset[which(country_dataset$who_member_state == "FALSE"),]$name
+
+## TODO: add check for duplicates
 
 #############################################
 ## Export data ##############################

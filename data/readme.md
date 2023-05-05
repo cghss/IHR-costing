@@ -9,7 +9,7 @@ This directory contains the underlying datasets that power the IHR costing tool.
 | File                    |  Source                                        | Data last updated
 | :---                    | :---                                           | :--- 
 | metrics.tsv             | multiple (see below)                           | 21 April, 2023
-| countries.tsv           | multiple (see generate-country-data)           | 10 February, 2023
+| countries.tsv           | multiple (see generate-country-data)           | 5 May, 2023
 | unit_costs.tsv          | GHSS Research Team                             | 28 April, 2023
 | detailed_costing.tsv    | GHSS Research Team                             | 13 January, 2023
 | line_items.tsv          | GHSS Research Team                             | 5 May, 2023
@@ -50,7 +50,7 @@ This file is included for reference only, and contains documentation of any subc
 ### countries.tsv
 This file contains information on geographic areas, including countries and other territories, based on data from a number of sources. Please see the generate-country-data/ subdirectory for more information, references, and documentation of data processing
 
-   - **data last updated:** ongoing
+   - **data last updated:** 5 May, 2023 (ongoing)
    - **resolution:** one row per country or area
    - **source or reference:** (multiple, please see the generate-country-data/ subdirectory for more info)
 

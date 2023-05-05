@@ -37,7 +37,7 @@ OECD. Doctors' consultations (indicator) [Internet]. doi: 10.1787/173dcf26-en. [
 World Bank. World Bank Country and Lending Groups [Internet]. 2023 [cited 2023 Jan 7]. Available from: https://datahelpdesk.worldbank.org/knowledgebase/articles/906519-world-bank-country-and-lending-groups
 
 **Source: World Health Organization**
-*Files: medical_doctors_per10000.csv, nursing_midwives_per10000.csv, chw_count.csv*
+*Files: medical_doctors_per10000.csv, nursing_midwives_per10000.csv, dentists_per10000.csv, chw_count.csv*
 
 World Health Organization. Global Health Workforce statistics database [Internet]. [cited 2023 Jan 13]. Available from: https://www.who.int/data/gho/data/themes/topics/health-workforce
 
