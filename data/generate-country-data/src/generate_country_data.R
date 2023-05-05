@@ -48,13 +48,128 @@ nurse_midwife <- read.csv("data/generate-country-data/inputs/who/ursing_midwives
 ## CHW dataset from WHO
 chw <- read.csv("data/generate-country-data/inputs/who/chw_count.csv", header = TRUE)
 
+## SPAR dataset (2022)
+spar2022 <- read.delim("data/generate-country-data/inputs/who/IHRScoreperCapacity_202305051146.tsv", header = TRUE)
+  
 #############################################
-## Process individual datasets: #############
-## base dataset ############################# 
+## Assorted data cleaning ###################
 #############################################
 
+## trim trailing white space in 2022 SPAR dataset 
+spar2022$country_clean <- trimws(spar2022$Country, which = "right")
+
+## clean up field name so it can be recognized by sqldf below
+names(spar2022)[which(names(spar2022) == "C.6.1")] <- "C61"
+
+## clean up missing SPAR data for select fields
+spar2022$total_average[which(spar2022$total_average == "no data")] <- NA
+
+#############################################
+## Clean country names/ISOs #################
+#############################################
+
+## United States (modify in base file from CIA Word Factbook)
 if(any(base$name == "United States")){
   base[which(base$name == "United States"),]$name <- "United States of America"
+}
+
+## Bahamas / Bahamas, The
+if(any(spar2022$country_clean == "Bahamas")){
+  spar2022[which(spar2022$country_clean == "Bahamas"),]$country_clean <- "Bahamas, The"
+}
+
+## Bolivia (Plurinational State of)
+if(any(spar2022$country_clean == "Bolivia (Plurinational State of)")){
+  spar2022[which(spar2022$country_clean == "Bolivia (Plurinational State of)"),]$country_clean <- "Bolivia"
+}
+
+## Brunei Darussalam / Brunei
+if(any(spar2022$country_clean == "Brunei Darussalam")){
+  spar2022[which(spar2022$country_clean == "Brunei Darussalam"),]$country_clean <- "Brunei"
+}
+
+## Czech Republic / Czechia
+if(any(spar2022$country_clean == "Czech Republic")){
+  spar2022[which(spar2022$country_clean == "Czech Republic"),]$country_clean <- "Czechia"
+}
+
+## Congo/Congo, Republic of the
+if(any(spar2022$country_clean == "Congo")){
+  spar2022[which(spar2022$country_clean == "Congo"),]$country_clean <- "Congo, Republic of the"
+}
+
+## Democratic Republic of the Congo / Congo, Democratic Republic of the
+if(any(spar2022$country_clean == "Democratic Republic of the Congo")){
+  spar2022[which(spar2022$country_clean == "Democratic Republic of the Congo"),]$country_clean <- "Congo, Democratic Republic of the"
+}
+
+## Holy See/ Holy See (Vatican City)
+if(any(spar2022$country_clean == "Holy See")){
+  spar2022[which(spar2022$country_clean == "Holy See"),]$country_clean <- "Holy See (Vatican City)"
+}
+
+##  Iran / Iran (Islamic Republic of)
+if(any(spar2022$country_clean == "Iran (Islamic Republic of)")){
+  spar2022[which(spar2022$country_clean == "Iran (Islamic Republic of)"),]$country_clean <- "Iran"
+}
+
+## Lao People's Democratic Republic / Laos
+if(any(spar2022$country_clean == "Lao People's Democratic Republic")){
+  spar2022[which(spar2022$country_clean == "Lao People's Democratic Republic"),]$country_clean <- "Laos"
+}
+
+## Moldova / Republic of Moldova
+if(any(spar2022$country_clean == "Republic of Moldova")){
+  spar2022[which(spar2022$country_clean == "Republic of Moldova"),]$country_clean <- "Moldova"
+}
+## Netherlands / Netherlands (Kingdom of the)
+if(any(spar2022$country_clean == "Netherlands (Kingdom of the)")){
+  spar2022[which(spar2022$country_clean == "Netherlands (Kingdom of the)"),]$country_clean <- "Netherlands"
+}
+
+## Tanzania / United Republic of Tanzania
+if(any(spar2022$country_clean == "United Republic of Tanzania")){
+  spar2022[which(spar2022$country_clean == "United Republic of Tanzania"),]$country_clean <- "Tanzania"
+}
+
+## Russian Federation / Russia
+if(any(spar2022$country_clean == "Russian Federation")){
+  spar2022[which(spar2022$country_clean == "Russian Federation"),]$country_clean <- "Russia"
+}
+
+## Micronesia / Micronesia, Federated States of
+if(any(spar2022$country_clean == "Micronesia")){
+  spar2022[which(spar2022$country_clean == "Micronesia"),]$country_clean <- "Micronesia, Federated States of"
+}
+
+##  North Korea / Democratic People's Republic of Korea 
+if(any(spar2022$country_clean == "Democratic People's Republic of Korea")){
+  spar2022[which(spar2022$country_clean == "Democratic People's Republic of Korea"),]$country_clean <- "North Korea"
+}
+
+## South Korea / Republic of Korea
+if(any(spar2022$country_clean == "Republic of Korea")){
+  spar2022[which(spar2022$country_clean == "Republic of Korea"),]$country_clean <- "South Korea"
+}
+
+## Syrian Arab Republic / Syria
+if(any(spar2022$country_clean == "Syrian Arab Republic")){
+  spar2022[which(spar2022$country_clean == "Syrian Arab Republic"),]$country_clean <- "Syria"
+}
+
+## United Kingdom of Great Britain and Northern Ireland / United Kingdom of Great Britain and Northern Ireland
+if(any(spar2022$country_clean == "United Kingdom of Great Britain and Northern Ireland")){
+  spar2022[which(spar2022$country_clean == "United Kingdom of Great Britain and Northern Ireland"),]$country_clean <- "United Kingdom"
+}
+
+## Venezuela (Bolivarian Republic of) / Venezuela
+if(any(spar2022$country_clean == "Venezuela (Bolivarian Republic of)")){
+  spar2022[which(spar2022$country_clean == "Venezuela (Bolivarian Republic of)"),]$country_clean <- "Venezuela"
+}
+
+## Viet Nam / Vietnam
+if(any(spar2022$country_clean == "Viet Nam")){
+  spar2022[which(spar2022$country_clean == "Viet Nam"),]$country_clean <- "Vietnam"
 }
 
 #############################################
@@ -118,6 +233,8 @@ select
   b.internet_code as internet_code,
   wm.who_member_state,
   wm.who_region,
+  spar2022.total_average AS spar2022_total_average,
+  spar2022.C61 AS spar_2022_human_resources_ihr,
   b.intermediate_area_name as intermediate_area_name,
   b.intermediate_area_count as intermediate_area_count,
   b.intermediate_area_reference as intermediate_area_reference,
@@ -129,7 +246,7 @@ select
   md.FactValueNumeric as mds_per_10000capita,
   ('WHO Global Health Workforce statistics database (' || md.Period || ')') as mds_per_10000capita_reference,
   nm.FactValueNumeric as nurses_midwives_per_10000capita,
-  ('WHO Global Health Workforce statistics database (' || nm.Period || ')') as nurses_midwives_per_10000capita,
+  ('WHO Global Health Workforce statistics database (' || nm.Period || ')') as nurses_midwives_per_10000capita_reference,
   NULL as data_team_notes
 from base as b
 left join recent_hospital_count as h
@@ -151,6 +268,8 @@ left join who_membership as wm
 left join naphs_dates as nd 
   on b.name = nd.Country
   and nd.Country != 'Tanzania (Zanzibar)' /* excluded */
+left join spar2022 
+  on b.name = spar2022.country_clean
 ")
 
 #############################################
