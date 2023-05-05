@@ -51,24 +51,6 @@ line_items$custom_multiplier_2[which(is.na(line_items$custom_multiplier_2))] <- 
 ## format all default unit costs as numeric cariables
 unit_costs$default_value <- as.numeric(as.character(unit_costs$default_value))
 
-#Add field with just JEE 3 indicator
-  a <- strsplit(line_items$metric_ids, ",")
-  b <- lapply(a, function(x) return(ifelse(grepl("JEE3", x), x, NA)))
-  c <- unlist(lapply(b, function(x) ifelse(all(is.na(x)), "NA", x[which(complete.cases(x))])))
-line_items$metric_id_jee3 <- c; rm(a); rm(b); rm(c)
-
-#Add field with just SPAR indicator
-a <- strsplit(line_items$metric_ids, ",")
-b <- lapply(a, function(x) return(ifelse(grepl("SPAR", x), x, NA)))
-c <- unlist(lapply(b, function(x) ifelse(all(is.na(x)), "NA", x[which(complete.cases(x))])))
-line_items$metric_id_spar <- c; rm(a); rm(b); rm(c)
-
-#Add field with just HEPR indicator
-a <- strsplit(line_items$metric_ids, ",")
-b <- lapply(a, function(x) return(ifelse(grepl("HEPR", x), x, NA)))
-c <- unlist(lapply(b, function(x) ifelse(all(is.na(x)), "NA", x[which(complete.cases(x))])))
-line_items$metric_id_hepr <- c; rm(a); rm(b); rm(c)
-
 #######################################################
 ## Check for non-allowable characters #################
 #######################################################
