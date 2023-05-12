@@ -5,4 +5,5 @@ This github repository contains data, analyses, and other key materials to suppo
 
 * **data/:** the underlying datasets that power the IHR costing tool
 * **quality-checks/:** exploratory code used to review data and perform quality checks during data curation
-* **calculator-tool/:** simple R-based calculator for data analysis and summarization
+* **calculator-tool/:** simple R-based calculator for data analysis and summarization (stay tuned! this is in-progress)
+* **references/:** key references (PDFs) used to generate the data, including JEE and SPAR guidance, and methods documentation
