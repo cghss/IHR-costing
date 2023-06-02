@@ -19,6 +19,7 @@ library(dplyr) ## reshape, reformat, recode data: https://dplyr.tidyverse.org/re
 library(ggplot2) ## for plotting: https://ggplot2.tidyverse.org/
 library(scales) ## for commas on axes of plots
 library(treemap) ## for treemap visual
+library(openxlsx) ## to save Excel files
 
 #############################################
 ## Read in data #############################
@@ -181,7 +182,7 @@ stopifnot(
 ## do all line-items have an allowable administrative level specified?
 stopifnot(
   "Non-allowable administrative level" = 
-    all(line_items$administrative_level %in% c("Health facility", "Population", "Local", "Intermediate", "National", "Additional HWC/per 1000 population", "PoE"))
+    all(line_items$administrative_level %in% c("Health facility", "Population", "Local", "Intermediate", "National", "Additional HWC/per 1000 population", "PoE", "Additional healthcare workers (doctors, nurses, and midwives)"))
 )
 
 ## troubleshoot if error
@@ -280,7 +281,8 @@ line_items %>%
              ifelse(administrative_level == "Health facility", 5139/.5, 
              ifelse(administrative_level == "PoE", 5, ## todo pick number
              ifelse(administrative_level == "Population", 333287557,  ## https://www.census.gov/newsroom/press-releases/2022/2022-population-estimates.html
-             "error"))))))))) %>%
+             ifelse(administrative_level == "Additional healthcare workers (doctors, nurses, and midwives)", 0, # According to recent OECD data, the US has 26.1 MDs/10,000 capita + 156.9 nurse and midwives/10,000 capita. This corresponds to 183 HCW/10,000 capita or 18.3 HCW/1000 capita, which is greater than the threshold set of the JEE of 4.45 doctors, nurses, and midwives per 1000 capita. As a result, this value is set to zero.
+                    "error")))))))))) %>%
   mutate(y1cost = default_value*custom_multiplier_1*custom_multiplier_2*administrative_level_multiplier) %>%
   mutate(y2cost = ifelse(cost_type == "One-time", 0, default_value*custom_multiplier_1*custom_multiplier_2*administrative_level_multiplier)) %>%
   mutate(y3cost = ifelse(cost_type == "One-time", 0, default_value*custom_multiplier_1*custom_multiplier_2*administrative_level_multiplier)) %>%
@@ -293,3 +295,82 @@ treemap(index = c("pillar", "activity"),
           title = NA,
           vColor = "pillar")     
 dev.off()
+
+#############################################
+## Generate simple worksheet for costing ####
+## Exercise per country, based on JEE3 ######
+#############################################
+
+## create data strcuture where users can enter info about the multipliers they'd like to use
+
+## Rationale for examples included below for reference, however, users should modify to reflect their own
+## assumptions based on the best-available local knowledge
+## local_area_count: The United States total includes 3,006 counties; 14 boroughs and 11 census areas in Alaska; the District of Columbia; 64 parishes in Louisiana; Baltimore city, Maryland; St. Louis city, Missouri; that part of Yellowstone National Park in Montana; Carson City, Nevada; and 41 independent cities in Virginia.
+## health_facility_count: Look at community hospitals, https://www.aha.org/statistics/fast-facts-us-hospitals, assume 50% of hospitals participate in IHR related activities
+## points_of_entry_count: 5
+## additional_doctors_nurses_midwives: According to recent OECD data, the US has 26.1 MDs/10,000 capita + 156.9 nurse and midwives/10,000 capita. This corresponds to 183 HCW/10,000 capita or 18.3 HCW/1000 capita, which is greater than the threshold set of the JEE of 4.45 doctors, nurses, and midwives per 1000 capita. As a result, this value is set to zero.
+## population: https://www.census.gov/newsroom/press-releases/2022/2022-population-estimates.html
+
+multipliers <- rbind.data.frame(
+  cbind.data.frame(category = "General information",
+                   observation = "Country name", 
+                   definition = "The name of the country or geographic area for which costing is being completed",
+                   example_value = "United States of America", 
+                   value = NA,
+                   note = "(optional) space for you to note any assumptions or references"),
+  cbind.data.frame(category = "General information",
+                   observation = "Population",
+                   definition = "The size of the population (this must be a number)",
+                   example_value = 333287557,
+                   value = NA,
+                   note = "(optional) space for you to note any assumptions or references"),
+  cbind.data.frame(category = "Administrative areas and organization",
+                   observation = "Intermediate area count",
+                   definition = "The number of intermediate areas", ## To do: refine this definition based on existing definitions in the tool
+                   example_value = 51,
+                   value = NA,
+                   note = "(optional) space for you to note any assumptions or references"),
+  cbind.data.frame(category = "Administrative areas and organization",
+                   observation = "Local area count",
+                   definition = "The number of local areas", ## To do: refine this definition based on existing definitions in the tool
+                   example_value = 3142,
+                   value = NA,
+                   note = "(optional) space for you to note any assumptions or references"),
+  cbind.data.frame(category = "Administrative areas and organization",
+                   observation = "Health facility count",
+                   definition = "The number of health facilities", ## To do: refine this definition based on existing definitions in the tool
+                   example_value = 3142,
+                   value = NA,
+                   note = "(optional) space for you to note any assumptions or references"),
+  cbind.data.frame(category = "Administrative areas and organization",
+                   observation = "Points of Entry Count",
+                   definition = "The number of points of entry", ## To do: refine this definition based on existing definitions in the tool
+                   example_value = 5,
+                   value = NA,
+                   note = "(optional) space for you to note any assumptions or references"),
+  cbind.data.frame(category = "Healthcare worker requirements",
+                   observation = "Additional doctors, nurses, and midwives",
+                   definition = "The number of additional doctors, nurses, and midwives, beyond existing workforce capacity, to be considered in cost calculations", 
+                   example_value = 0,
+                   value = NA,
+                   note = "(optional) space for you to note any assumptions or references"))
+
+## merge full metric information with line item costs to generate costing worksheet
+## add single field, "include" for users to indicate if they'd like to include a specific cost
+worksheet_items_jee3 <-  cbind.data.frame(
+  include = TRUE,
+  first_year_scored = as.numeric(worksheet_items_jee3$score_numeric)-1, ## by default, start everyone at a score of 1, at year 1, they go up to 2, etc, until they get to four, then last two years maintenence
+  ## this assumption above can/should be edited by end user, but since nobody has actual JEE 3 data we will need to rely on self-assessment and/or self-entered data
+  merge(metrics, line_items, 
+        by.x = "metric_id",
+        by.y = "jee3_metric_id",
+        sort = FALSE))
+
+## list all tabs you want to export in the Excel document worksheet you're making
+excel_sheets <- list("Line items (JEE 3)" = worksheet_items_jee3, 
+                     "Unit costs" = unit_costs,
+                     "Multipliers" = multipliers)
+
+## export worksheet in Excel
+write.xlsx(excel_sheets, file = "calculator-tool/jee3_costing_worksheet.xlsx")
+
