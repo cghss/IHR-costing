@@ -8,3 +8,5 @@ This directory is still in progress, but will eventually include a simple R scri
 - read in data from the data/ directory
 - specify a set of user inputs and assumptions
 - estimate yearly costs and generate simple visual graphics and outputs
+
+The calculator script will be designed to help calculate costs for one country at a time
