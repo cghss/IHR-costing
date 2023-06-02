@@ -39,5 +39,8 @@ vignettes/*.pdf
 # R Environment Variables
 .Renviron
 
-## ignore calculator tool for now
+# ignore calculator tool for now
 calculator-tool
+
+# image sizes are too big, ignore QA figures for now
+quality-checks/qa-figures/
