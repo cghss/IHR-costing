@@ -40,7 +40,7 @@ vignettes/*.pdf
 .Renviron
 
 # ignore calculator tool for now
-calculator-tool
+calculator-tool/
 
 # image sizes are too big, ignore QA figures for now
 quality-checks/qa-figures/
