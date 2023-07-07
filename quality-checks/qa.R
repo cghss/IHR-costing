@@ -64,21 +64,27 @@ unit_costs$default_value <- as.numeric(as.character(unit_costs$default_value))
 #   print(x)
 #   for (c in 1:maxStringLength){
 #     offendingChar <- substr(x,c,c)
-#     #print(offendingChar) #uncomment if you want the indiv characters printed
+#      print(offendingChar) #uncomment if you want the indiv characters printed
 #     #the next character is the offending multibyte Character
 #   }    
 # }
 # 
 # errors(lapply(line_items$activity, find_offending_character))
 
-#############################################
-## Field: Metric ID #########################
-#############################################
+##############################################################
+## Field: Metric and Metric Score ID #########################
+##############################################################
 
 ## do all indicators of the JEE have at least one row in line_items? (except scores of 1 and 5)?
 stopifnot(
   "Missing JEE indicators" = 
-    all(metrics$metric_id[which(metrics$framework == "JEE (3.0)" & metrics$score_numeric %in% c(2,3,4))] %in% line_items$jee3_metric_id)
+    all(metrics$metric_score_id[which(metrics$framework == "JEE (3.0)" & metrics$score_numeric %in% c(2,3,4))] %in% line_items$jee3_metric_score_id)
+)
+
+## are all values of metric score ID unique?
+stopifnot(
+  "Duplicated metric score IDs" = 
+    !any(duplicated(metrics$metric_score_id))
 )
 
 ## troubleshoot if you see an error above
@@ -118,13 +124,13 @@ stopifnot(
 )
 
 #############################################
-## Field: Activity ##########################
+## Field: Action ############################
 #############################################
 
-## do all line-items have a complete (non-NULL) activity specified?
+## do all line-items have a complete (non-NULL) action specified?
 stopifnot(
-  "Missing activity info" = 
-    all(complete.cases(line_items$activity))
+  "Missing action info" = 
+    all(complete.cases(line_items$action))
 )
 
 #############################################
@@ -266,10 +272,10 @@ dev.off()
 
 png("quality-checks/qa-figures/example_treemap.png", width = 8, height = 6, units = "in", res = 1200)
 line_items %>%
-  filter(complete.cases(jee3_metric_id) & jee3_metric_id != "NA") %>%
+  filter(complete.cases(jee3_metric_score_id) & jee3_metric_score_id != "NA") %>%
   left_join(unit_costs, by = "unit_cost") %>%
-  left_join((metrics %>% filter(metrics$framework == "JEE (3.0)") %>% select(c(metric_id, framework, pillar))),
-            by = join_by(jee3_metric_id == metric_id)) %>%
+  left_join((metrics %>% filter(metrics$framework == "JEE (3.0)") %>% select(c(metric_score_id, framework, pillar))),
+            by = join_by(jee3_metric_score_id == metric_score_id)) %>%
   bind_cols(countries %>% filter(name == "United States of America")) %>%
   mutate(administrative_level_multiplier = 
         as.numeric(as.character(
@@ -289,7 +295,7 @@ line_items %>%
   mutate(y4cost = ifelse(cost_type == "One-time", 0, default_value*custom_multiplier_1*custom_multiplier_2*administrative_level_multiplier)) %>%
   mutate(y5cost = ifelse(cost_type == "One-time", 0, default_value*custom_multiplier_1*custom_multiplier_2*administrative_level_multiplier)) %>%
   mutate(cost_5yrs = y1cost + y2cost + y3cost + y4cost + y5cost) %>%
-treemap(index = c("pillar", "activity"),
+treemap(index = c("pillar", "action"),
           vSize = "cost_5yrs",
           #fontsize.labels = 1,
           title = NA,
@@ -326,31 +332,31 @@ multipliers <- rbind.data.frame(
                    note = "(optional) space for you to note any assumptions or references"),
   cbind.data.frame(category = "Administrative areas and organization",
                    observation = "Intermediate area count",
-                   definition = "The number of intermediate areas", ## To do: refine this definition based on existing definitions in the tool
+                   definition = "The number of intermediate areas in the country (this must be a number)", 
                    example_value = 51,
                    value = NA,
                    note = "(optional) space for you to note any assumptions or references"),
   cbind.data.frame(category = "Administrative areas and organization",
                    observation = "Local area count",
-                   definition = "The number of local areas", ## To do: refine this definition based on existing definitions in the tool
-                   example_value = 3142,
+                   definition = "The number of local areas in the country (this must be a number)",
+                   example_value = 3143,
                    value = NA,
                    note = "(optional) space for you to note any assumptions or references"),
   cbind.data.frame(category = "Administrative areas and organization",
                    observation = "Health facility count",
-                   definition = "The number of health facilities", ## To do: refine this definition based on existing definitions in the tool
+                   definition = "The number of health facilities (likely hospitals and government-run health centers) participating in IHR-related activities (this must be a number)", 
                    example_value = 3142,
                    value = NA,
                    note = "(optional) space for you to note any assumptions or references"),
   cbind.data.frame(category = "Administrative areas and organization",
                    observation = "Points of Entry Count",
-                   definition = "The number of points of entry", ## To do: refine this definition based on existing definitions in the tool
+                   definition = "The number of points of entry participating in IHR-related activities (this must be a number)",
                    example_value = 5,
                    value = NA,
                    note = "(optional) space for you to note any assumptions or references"),
   cbind.data.frame(category = "Healthcare worker requirements",
                    observation = "Additional doctors, nurses, and midwives",
-                   definition = "The number of additional doctors, nurses, and midwives, beyond existing workforce capacity, to be considered in cost calculations", 
+                   definition = "The number of additional doctors, nurses, and midwives, beyond existing workforce capacity, to be considered in cost calculations  (this must be a number)", 
                    example_value = 0,
                    value = NA,
                    note = "(optional) space for you to note any assumptions or references"))
@@ -360,8 +366,8 @@ multipliers <- rbind.data.frame(
 worksheet_items_jee3 <-  cbind.data.frame(
   include = TRUE,
   merge(metrics, line_items, 
-        by.x = "metric_id",
-        by.y = "jee3_metric_id",
+        by.x = "metric_score_id",
+        by.y = "jee3_metric_score_id",
         sort = FALSE))
 
 ## create a place for countries to enter their score for each unique score
@@ -374,20 +380,26 @@ worksheet_items_jee3 <-  cbind.data.frame(
 ## because the metrics dataframe contains one row per indicater per score
 
 raw_scores <- metrics %>%
-  group_by(metric_id, framework, pillar, capacity, indicator) %>%
+  filter(framework == "JEE (3.0)") %>%
+  group_by(metric_id,framework, pillar, capacity, indicator) %>%
   summarize(n = n(), .groups = 'keep')
   
-scores <- list("Metric ID" = metrics$metric_id,
-               "Framework" = metrics$framework,
-               "Pillar" = metrics$pillar,
-               "Capacity" = metrics$capacity,
-               "Indicator" = metrics$indicator,
-               "")
+scores <- cbind.data.frame("metric_id" = raw_scores$metric_id,
+                           "framework" = raw_scores$framework,
+                           "pillar" = raw_scores$pillar,
+                           "capacity" = raw_scores$capacity,
+                           "indicator" = raw_scores$indicator,
+                           "country_score_numeric" = 1)
+
+## treat pillar as a factor so we keep the prevent, detect, response, other order
+scores$pillar <- factor(scores$pillar, levels = c("Prevent", "Detect", "Respond", "IHR Related Hazards and Points of Entry and Border Health"))
+scores <- scores[order(scores$pillar, scores$metric_id),]
 
 ## list all tabs you want to export in the Excel document worksheet you're making
-excel_sheets <- list("Line items (JEE 3)" = worksheet_items_jee3, 
+excel_sheets <- list("Country scores" = scores,
+                     "Multipliers" = multipliers,
                      "Unit costs" = unit_costs,
-                     "Multipliers" = multipliers)
+                     "Line items (JEE 3)" = worksheet_items_jee3)
 
 ## export worksheet in Excel
 write.xlsx(excel_sheets, file = "calculator-tool/jee3_costing_worksheet.xlsx")
