@@ -234,7 +234,6 @@ select
   wm.who_member_state,
   wm.who_region,
   spar2022.total_average AS spar2022_total_average,
-  spar2022.C61 AS spar_2022_human_resources_ihr,
   b.intermediate_area_name as intermediate_area_name,
   b.intermediate_area_count as intermediate_area_count,
   b.intermediate_area_reference as intermediate_area_reference,
