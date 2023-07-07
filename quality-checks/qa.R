@@ -5,7 +5,7 @@
 ## This script contains checks used to perform data Q/A during the data 
 ## collection, management, and curation process
 
-## assume working directory is set to IHR-costing
+## Code assumes that the working directory is set to IHR-costing
 
 #############################################
 ## Setup ####################################
@@ -359,12 +359,30 @@ multipliers <- rbind.data.frame(
 ## add single field, "include" for users to indicate if they'd like to include a specific cost
 worksheet_items_jee3 <-  cbind.data.frame(
   include = TRUE,
-  first_year_scored = as.numeric(worksheet_items_jee3$score_numeric)-1, ## by default, start everyone at a score of 1, at year 1, they go up to 2, etc, until they get to four, then last two years maintenence
-  ## this assumption above can/should be edited by end user, but since nobody has actual JEE 3 data we will need to rely on self-assessment and/or self-entered data
   merge(metrics, line_items, 
         by.x = "metric_id",
         by.y = "jee3_metric_id",
         sort = FALSE))
+
+## create a place for countries to enter their score for each unique score
+## note that since no countries have completed a third edition JEE as of the time
+## of creating this calculator tool, users will have to complete a self-assessment
+## and enter this manually; as a placeholder, we will specify a score of 1 against all 
+## indicators for JEE 3.0
+
+## first roll up metrics dataframe to a new dataset with just one row per indicator,
+## because the metrics dataframe contains one row per indicater per score
+
+raw_scores <- metrics %>%
+  group_by(metric_id, framework, pillar, capacity, indicator) %>%
+  summarize(n = n(), .groups = 'keep')
+  
+scores <- list("Metric ID" = metrics$metric_id,
+               "Framework" = metrics$framework,
+               "Pillar" = metrics$pillar,
+               "Capacity" = metrics$capacity,
+               "Indicator" = metrics$indicator,
+               "")
 
 ## list all tabs you want to export in the Excel document worksheet you're making
 excel_sheets <- list("Line items (JEE 3)" = worksheet_items_jee3, 

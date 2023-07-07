@@ -237,7 +237,7 @@ select
   b.intermediate_area_name as intermediate_area_name,
   b.intermediate_area_count as intermediate_area_count,
   b.intermediate_area_reference as intermediate_area_reference,
-  b.cia_factbook_note as cia_factbook_note,
+  b.cia_factbook_note as cia_factbook_reference,
   h.Value as general_hospital_count,
   ('OECD Health Care Resources: Hospitals Dataset (' || Year || ')') as general_hospital_reference,
   u.Value as doctor_consultations_per_capita,
@@ -246,7 +246,7 @@ select
   ('WHO Global Health Workforce statistics database (' || md.Period || ')') as mds_per_10000capita_reference,
   nm.FactValueNumeric as nurses_midwives_per_10000capita,
   ('WHO Global Health Workforce statistics database (' || nm.Period || ')') as nurses_midwives_per_10000capita_reference,
-  NULL as data_team_notes
+  NULL as research_team_notes
 from base as b
 left join recent_hospital_count as h
   on b.iso_3166 = h.COU
