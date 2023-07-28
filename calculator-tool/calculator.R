@@ -1,3 +1,6 @@
+
+## NOTE: THIS SCRIPT IS A WORK-IN-PROGRESS AND IS NOT READY FOR FINAL USE
+
 #############################################
 ## Background ###############################
 #############################################
@@ -71,10 +74,10 @@ unit_costs$default_value <- as.numeric(as.character(unit_costs$default_value))
 line_items$score_numeric <- as.numeric(as.character(line_items$score_numeric))
 
 #######################################################
-## Calculate costs per activity #######################
+## Calculate costs per line-item ######################
 #######################################################
 
-yearly_costs <- line_items %>%
+line_item_costs <- line_items %>%
   ## add info on unit costs, left join so we don't accidentally lose any line items
   left_join(unit_costs[,which(names(unit_costs) %in% c("category_sloan", "category", "subcategory", "unit_cost", "unit", "default_value"))], by = "unit_cost") %>%
   ## add info on country scores
@@ -90,16 +93,15 @@ yearly_costs <- line_items %>%
              ifelse(administrative_level == "Population", multipliers[which(multipliers$observation == "Population"),]$value,
              ifelse(administrative_level == "Additional healthcare workers (doctors, nurses, and midwives)",  multipliers[which(multipliers$observation == "Additional doctors, nurses, and midwives"),]$value,
                     "error")))))))))) %>%
-  ## just look at rows marked as include == TRUE (the ones we actually want to cost)
-  filter(include == TRUE) %>%
   ## just look at rows where the country's current score is lower than the item being costed (e.g., we don't assume they've already done it)
   filter(country_score_numeric < score_numeric) %>%
   ## mark which costs are included in year 1, 2, 3, 4, and 5
-  mutate(costed_y1 = score_numeric - country_score_numeric == 1 ) %>% ## all items that are one score up from the current score get costed in year 1
-  mutate(costed_y2 = (score_numeric - country_score_numeric == 1 & cost_type  == "Recurring") | (score_numeric - country_score_numeric == 2)) %>% ## items will be costed in year 2 if they meeting one of two criteria: (1) they are from year 1, but recurring or (2) they occur at two levels up from the initial score, assuming progress of one point up per year 
-  mutate(costed_y3 = (score_numeric - country_score_numeric <= 2 & cost_type  == "Recurring") | (score_numeric - country_score_numeric == 3)) %>% ## items will be costed in year 3 if they meeting one of two criteria: (1) they are from years 1 or 2, but recurring or (2) they occur at three levels up from the initial score, assuming progress of one point up per year 
-  mutate(costed_y4 = (score_numeric - country_score_numeric <= 3 & cost_type  == "Recurring") | (score_numeric - country_score_numeric == 4)) %>% ## items will be costed in year 4 if they meeting one of two criteria: (1) they are from years 1-3, but recurring or (2) they occur at four levels up from the initial score, assuming progress of one point up per year 
-  mutate(costed_y5 = (score_numeric - country_score_numeric <= 4 & cost_type  == "Recurring") | (score_numeric - country_score_numeric == 5)) %>% ## items will be costed in year 5 if they meeting one of two criteria: (1) they are from years 1-4, but recurring or (2) they occur at five levels up from the initial score, assuming progress of one point up per year (since we don't cost a five, this isn't currently possible)
+  ## just look at rows marked as include == TRUE (the ones we actually want to cost, specified in the worksheet)
+  mutate(costed_y1 = include == TRUE & (score_numeric - country_score_numeric) == 1 ) %>% ## all items that are one score up from the current score get costed in year 1
+  mutate(costed_y2 = include == TRUE & (score_numeric - country_score_numeric == 1 & cost_type  == "Recurring") | (score_numeric - country_score_numeric == 2)) %>% ## items will be costed in year 2 if they meeting one of two criteria: (1) they are from year 1, but recurring or (2) they occur at two levels up from the initial score, assuming progress of one point up per year 
+  mutate(costed_y3 = include == TRUE & (score_numeric - country_score_numeric <= 2 & cost_type  == "Recurring") | (score_numeric - country_score_numeric == 3)) %>% ## items will be costed in year 3 if they meeting one of two criteria: (1) they are from years 1 or 2, but recurring or (2) they occur at three levels up from the initial score, assuming progress of one point up per year 
+  mutate(costed_y4 = include == TRUE & (score_numeric - country_score_numeric <= 3 & cost_type  == "Recurring") | (score_numeric - country_score_numeric == 4)) %>% ## items will be costed in year 4 if they meeting one of two criteria: (1) they are from years 1-3, but recurring or (2) they occur at four levels up from the initial score, assuming progress of one point up per year 
+  mutate(costed_y5 = include == TRUE & (score_numeric - country_score_numeric <= 4 & cost_type  == "Recurring") | (score_numeric - country_score_numeric == 5)) %>% ## items will be costed in year 5 if they meeting one of two criteria: (1) they are from years 1-4, but recurring or (2) they occur at five levels up from the initial score, assuming progress of one point up per year (since we don't cost a five, this isn't currently possible)
   ## calculate yearly costs for a five year period
   mutate(y1cost = ifelse(costed_y1 == TRUE, default_value*custom_multiplier_1*custom_multiplier_2*administrative_multiplier_unit, 0)) %>%
   mutate(y2cost = ifelse(costed_y2 == TRUE, default_value*custom_multiplier_1*custom_multiplier_2*administrative_multiplier_unit, 0)) %>%
@@ -107,17 +109,64 @@ yearly_costs <- line_items %>%
   mutate(y4cost = ifelse(costed_y4 == TRUE, default_value*custom_multiplier_1*custom_multiplier_2*administrative_multiplier_unit, 0)) %>%
   mutate(y5cost = ifelse(costed_y5 == TRUE, default_value*custom_multiplier_1*custom_multiplier_2*administrative_multiplier_unit, 0)) %>%
   mutate(cost_5yrs = y1cost + y2cost + y3cost + y4cost + y5cost) %>%
-  select(line_item_id, metric_score_id, pillar, capacity, indicator, score_numeric, score_text, attribute, requirement, action, description, unit_cost, administrative_level, y1cost, y2cost, y3cost, y4cost, y5cost, cost_5yrs, cost_type, default_value, custom_multiplier_1, custom_multiplier_2, administrative_multiplier_unit, relevant_references, optional_cost, notes_assumptions, category_sloan, category, subcategory)
+  select(line_item_id, include, metric_score_id, pillar, capacity, indicator, score_numeric, score_text, attribute, requirement, action, description, unit_cost, administrative_level, y1cost, y2cost, y3cost, y4cost, y5cost, cost_5yrs, cost_type, default_value, custom_multiplier_1, custom_multiplier_2, administrative_multiplier_unit, relevant_references, optional_cost, notes_assumptions, category_sloan, category, subcategory)
 
+##############################################################
+## Calculate costs per indicator-score #######################
+##############################################################
 
-#######################################################
-## Calculate costs per activity #######################
-#######################################################
+indicator_score_costs <-
+  line_item_costs %>%
+  group_by(metric_score_id, indicator, score_numeric, score_text) %>%
+  dplyr::summarize(y1cost = sum(y1cost), 
+                   y2cost = sum(y2cost),
+                   y3cost = sum(y3cost),
+                   y4cost = sum(y4cost),
+                   y5cost = sum(y5cost),
+                   cost_5yrs = sum(cost_5yrs),
+                   .groups = "keep")
 
-yearly_costs %>%
-treemap(index = c("pillar", "action"),
-          vSize = "cost_5yrs",
-          #fontsize.labels = 1,
-          title = NA,
-          vColor = "pillar")     
+##############################################################
+## Calculate costs per indicator #############################
+##############################################################
+
+indicator_costs <-
+  indicator_score_costs %>%
+  group_by(indicator) %>%
+  dplyr::summarize(y1cost = sum(y1cost), 
+                   y2cost = sum(y2cost),
+                   y3cost = sum(y3cost),
+                   y4cost = sum(y4cost),
+                   y5cost = sum(y5cost),
+                   cost_5yrs = sum(cost_5yrs),
+                   .groups = "keep")
+
+##############################################################
+## Calculate costs per indicator-score #######################
+##############################################################
+
+cost_category_costs <-
+  line_item_costs %>%
+  group_by(category, subcategory) %>%
+  dplyr::summarize(y1cost = sum(y1cost), 
+                   y2cost = sum(y2cost),
+                   y3cost = sum(y3cost),
+                   y4cost = sum(y4cost),
+                   y5cost = sum(y5cost),
+                   cost_5yrs = sum(cost_5yrs),
+                   .groups = "keep") %>%
+  arrange(category, desc(cost_5yrs))
+  
+##############################################################
+## Export data ###############################################
+##############################################################
+
+## list all tabs you want to export in the Excel document worksheet you're making
+excel_sheets <- list("Costs per indicator" = indicator_costs,
+                     "Costs per indicator and score" = indicator_score_costs,
+                     "Costs per cost category" = cost_category_costs)
+
+## export worksheet in Excel
+write.xlsx(excel_sheets, file = "calculator-tool/jee3_costing_results.xlsx")
+
 
