@@ -42,5 +42,7 @@ vignettes/*.pdf
 # image sizes are too big, ignore QA figures for now
 quality-checks/qa-figures/
 
-# don't export sample results
+# don't export sample results or select temp files
 calculator-tool/jee3_costing_results.xlsx
+calculator-tool/~$jee3_costing_results.xlsx
+data/~$Data Dictionary.xlsx
