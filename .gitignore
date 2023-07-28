@@ -45,4 +45,5 @@ quality-checks/qa-figures/
 # don't export sample results or select temp files
 calculator-tool/jee3_costing_results.xlsx
 calculator-tool/~$jee3_costing_results.xlsx
+calculator-tool/~$jee3_costing_worksheet.xlsx
 data/~$Data Dictionary.xlsx
