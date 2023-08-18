@@ -10,7 +10,7 @@ This directory contains the underlying datasets that power the IHR costing tool.
 | :---                    | :---                                           | :--- 
 | metrics.tsv             | multiple (see below)                           | 7 July, 2023
 | countries.tsv           | multiple (see generate-country-data)           | 7 July, 2023
-| unit_costs.tsv          | GHSS Research Team                             | 28 July, 2023
+| unit_costs.tsv          | GHSS Research Team                             | 18 August, 2023
 | detailed_costing.tsv    | GHSS Research Team                             | 7 July, 2023
 | line_items.tsv          | GHSS Research Team                             | 28 July, 2023
 
@@ -36,7 +36,7 @@ This file documents the activities and costs associated with the activitites art
 ### unit_costs.tsv
 This file contains information on default unit costs for items included in the IHR costing tool. Of note, these costs are best determined on a local and/or regional basis, as unit costs can and do vary substantially from location to location, particularly unit costs associated with personnel salaries. These references are intended to serve as defaults and available references, but are not meant to replace local expertise in procurement, budgeting, and supply chain expertise.
 
-   - **data last updated:** 28 July, 2023
+   - **data last updated:** 18 August, 2023
    - **grain:** one row per unit cost
    - **source or reference:** GHSS Research, citations and URLs included throughout
 

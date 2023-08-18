@@ -169,4 +169,9 @@ excel_sheets <- list("Costs per indicator" = indicator_costs,
 ## export worksheet in Excel
 write.xlsx(excel_sheets, file = "calculator-tool/jee3_costing_results.xlsx")
 
+##############################################################
+## Generate graphics #########################################
+##############################################################
+
+
 
