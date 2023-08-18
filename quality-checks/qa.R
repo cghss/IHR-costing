@@ -145,7 +145,7 @@ stopifnot(
 
 ## troubleshoot if you see an error above
 ## find duplicate line item ids
-#line_items[which(duplicated(line_items$line_item_id)),]$line_item_id
+line_items[which(duplicated(line_items$line_item_id)),]$line_item_id
 
 #############################################
 ## Field: Unit cost #########################
