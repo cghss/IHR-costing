@@ -167,11 +167,17 @@ excel_sheets <- list("Costs per indicator" = indicator_costs,
                      "Costs per cost category" = cost_category_costs)
 
 ## export worksheet in Excel
-write.xlsx(excel_sheets, file = "calculator-tool/jee3_costing_results.xlsx")
+write.xlsx(excel_sheets, file = "calculator-tool/example_jee3_costing_results.xlsx")
 
 ##############################################################
 ## Generate graphics #########################################
 ##############################################################
 
-
+## treemap of costs by category
+cost_category_costs %>%
+  treemap(index = c("category", "subcategory"),
+          vSize = "cost_5yrs",
+          #fontsize.labels = 1,
+          title = NA,
+          vColor = "category") 
 

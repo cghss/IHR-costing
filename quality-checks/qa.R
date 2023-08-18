@@ -270,37 +270,37 @@ dev.off()
 ## then all recurring costs costed each year after that
 ## lets us look across all items but not intended to be analyzed over time
 
-png("quality-checks/qa-figures/example_treemap.png", width = 8, height = 6, units = "in", res = 1200)
-line_items %>%
-  filter(complete.cases(jee3_metric_score_id) & jee3_metric_score_id != "NA") %>%
-  left_join(unit_costs, by = "unit_cost") %>%
-  left_join((metrics %>% filter(metrics$framework == "JEE (3.0)") %>% select(c(metric_score_id, framework, pillar))),
-            by = join_by(jee3_metric_score_id == metric_score_id)) %>%
-  bind_cols(countries %>% filter(name == "United States of America")) %>%
-  mutate(administrative_level_multiplier = 
-        as.numeric(as.character(
-             ifelse(administrative_level == "National", 1,
-             ifelse(administrative_level == "Intermediate", intermediate_area_count,
-             ## The United States total includes 3,006 counties; 14 boroughs and 11 census areas in Alaska; the District of Columbia; 64 parishes in Louisiana; Baltimore city, Maryland; St. Louis city, Missouri; that part of Yellowstone National Park in Montana; Carson City, Nevada; and 41 independent cities in Virginia.
-             ifelse(administrative_level == "Local", (3006 + 14 + 11  + 1 + 64 + 4 + 1 + 41), ## https://www2.census.gov/geo/pdfs/reference/GARM/Ch4GARM.pdf (exclude yellowstone)    
-             ## Look at community hospitals, https://www.aha.org/statistics/fast-facts-us-hospitals, assume 50% of hospitals participate in IHR related activities
-             ifelse(administrative_level == "Health facility", 5139/.5, 
-             ifelse(administrative_level == "PoE", 5, ## todo pick number
-             ifelse(administrative_level == "Population", 333287557,  ## https://www.census.gov/newsroom/press-releases/2022/2022-population-estimates.html
-             ifelse(administrative_level == "Additional healthcare workers (doctors, nurses, and midwives)", 0, # According to recent OECD data, the US has 26.1 MDs/10,000 capita + 156.9 nurse and midwives/10,000 capita. This corresponds to 183 HCW/10,000 capita or 18.3 HCW/1000 capita, which is greater than the threshold set of the JEE of 4.45 doctors, nurses, and midwives per 1000 capita. As a result, this value is set to zero.
-                    "error")))))))))) %>%
-  mutate(y1cost = default_value*custom_multiplier_1*custom_multiplier_2*administrative_level_multiplier) %>%
-  mutate(y2cost = ifelse(cost_type == "One-time", 0, default_value*custom_multiplier_1*custom_multiplier_2*administrative_level_multiplier)) %>%
-  mutate(y3cost = ifelse(cost_type == "One-time", 0, default_value*custom_multiplier_1*custom_multiplier_2*administrative_level_multiplier)) %>%
-  mutate(y4cost = ifelse(cost_type == "One-time", 0, default_value*custom_multiplier_1*custom_multiplier_2*administrative_level_multiplier)) %>%
-  mutate(y5cost = ifelse(cost_type == "One-time", 0, default_value*custom_multiplier_1*custom_multiplier_2*administrative_level_multiplier)) %>%
-  mutate(cost_5yrs = y1cost + y2cost + y3cost + y4cost + y5cost) %>%
-treemap(index = c("pillar", "action"),
-          vSize = "cost_5yrs",
-          #fontsize.labels = 1,
-          title = NA,
-          vColor = "pillar")     
-dev.off()
+# png("quality-checks/qa-figures/example_treemap.png", width = 8, height = 6, units = "in", res = 1200)
+# line_items %>%
+#   filter(complete.cases(jee3_metric_score_id) & jee3_metric_score_id != "NA") %>%
+#   left_join(unit_costs, by = "unit_cost") %>%
+#   left_join((metrics %>% filter(metrics$framework == "JEE (3.0)") %>% select(c(metric_score_id, framework, pillar))),
+#             by = join_by(jee3_metric_score_id == metric_score_id)) %>%
+#   bind_cols(countries %>% filter(name == "United States of America")) %>%
+#   mutate(administrative_level_multiplier = 
+#         as.numeric(as.character(
+#              ifelse(administrative_level == "National", 1,
+#              ifelse(administrative_level == "Intermediate", intermediate_area_count,
+#              ## The United States total includes 3,006 counties; 14 boroughs and 11 census areas in Alaska; the District of Columbia; 64 parishes in Louisiana; Baltimore city, Maryland; St. Louis city, Missouri; that part of Yellowstone National Park in Montana; Carson City, Nevada; and 41 independent cities in Virginia.
+#              ifelse(administrative_level == "Local", (3006 + 14 + 11  + 1 + 64 + 4 + 1 + 41), ## https://www2.census.gov/geo/pdfs/reference/GARM/Ch4GARM.pdf (exclude yellowstone)    
+#              ## Look at community hospitals, https://www.aha.org/statistics/fast-facts-us-hospitals, assume 50% of hospitals participate in IHR related activities
+#              ifelse(administrative_level == "Health facility", 5139/.5, 
+#              ifelse(administrative_level == "PoE", 5, ## todo pick number
+#              ifelse(administrative_level == "Population", 333287557,  ## https://www.census.gov/newsroom/press-releases/2022/2022-population-estimates.html
+#              ifelse(administrative_level == "Additional healthcare workers (doctors, nurses, and midwives)", 0, # According to recent OECD data, the US has 26.1 MDs/10,000 capita + 156.9 nurse and midwives/10,000 capita. This corresponds to 183 HCW/10,000 capita or 18.3 HCW/1000 capita, which is greater than the threshold set of the JEE of 4.45 doctors, nurses, and midwives per 1000 capita. As a result, this value is set to zero.
+#                     "error")))))))))) %>%
+#   mutate(y1cost = default_value*custom_multiplier_1*custom_multiplier_2*administrative_level_multiplier) %>%
+#   mutate(y2cost = ifelse(cost_type == "One-time", 0, default_value*custom_multiplier_1*custom_multiplier_2*administrative_level_multiplier)) %>%
+#   mutate(y3cost = ifelse(cost_type == "One-time", 0, default_value*custom_multiplier_1*custom_multiplier_2*administrative_level_multiplier)) %>%
+#   mutate(y4cost = ifelse(cost_type == "One-time", 0, default_value*custom_multiplier_1*custom_multiplier_2*administrative_level_multiplier)) %>%
+#   mutate(y5cost = ifelse(cost_type == "One-time", 0, default_value*custom_multiplier_1*custom_multiplier_2*administrative_level_multiplier)) %>%
+#   mutate(cost_5yrs = y1cost + y2cost + y3cost + y4cost + y5cost) %>%
+# treemap(index = c("pillar", "action"),
+#           vSize = "cost_5yrs",
+#           #fontsize.labels = 1,
+#           title = NA,
+#           vColor = "pillar")     
+# dev.off()
 
 #############################################
 ## Generate simple worksheet for costing ####
