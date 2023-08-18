@@ -145,7 +145,7 @@ stopifnot(
 
 ## troubleshoot if you see an error above
 ## find duplicate line item ids
-line_items[which(duplicated(line_items$line_item_id)),]$line_item_id
+#line_items[which(duplicated(line_items$line_item_id)),]$line_item_id
 
 #############################################
 ## Field: Unit cost #########################
@@ -307,7 +307,7 @@ dev.off()
 ## Exercise per country, based on JEE3 ######
 #############################################
 
-## create data strcuture where users can enter info about the multipliers they'd like to use
+## create data structure where users can enter info about the multipliers they'd like to use
 
 ## Rationale for examples included below for reference, however, users should modify to reflect their own
 ## assumptions based on the best-available local knowledge
