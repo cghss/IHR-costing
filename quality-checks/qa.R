@@ -207,6 +207,19 @@ stopifnot(
 ## troubleshoot if you see an error above
 #unique(line_items$optional_cost)
 
+##################################################################
+## Field: global health emergency corps level ####################
+##################################################################
+
+## do all line-items have a global health emergency corps level specified?
+stopifnot(
+  "Select line item missing data on global health emergency corpls level" = 
+    all(complete.cases(line_items$global_health_emergency_corps_level))
+)
+
+## troubleshoot if you see an error above
+#unique(line_items$optional_cost)
+
 #############################################
 ## Explore most expensive unit costs ########
 ## Does this pass the sniff test? ###########
