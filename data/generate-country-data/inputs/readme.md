@@ -2,7 +2,7 @@
 
 This directory contains data accessed from the World Bank group to summarize information about countries or other geopolitical areas. The table below documents the sources of each table included in this directory.
 
-All files saved in this subdirectory have the same format and contents as the original datasets obtained from the World Bank. They are stored here as references and for research purposes, but researchers aiming to use these raw data for their own purposes should consult the references below to obtain original data from the World Bank.
+All files saved in this subdirectory have the same format and contents as the original datasets obtained from each source. They are stored here as references and for research purposes, but researchers aiming to use these raw data for their own purposes should consult the references below to obtain original data from each source.
 
 
 | Directory               | File                              |  Source             | Data last updated
