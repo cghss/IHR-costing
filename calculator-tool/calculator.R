@@ -1,6 +1,3 @@
-
-## NOTE: THIS SCRIPT IS A WORK-IN-PROGRESS AND IS NOT READY FOR FINAL USE
-
 #############################################
 ## Background ###############################
 #############################################
@@ -11,7 +8,7 @@
 ## by the International Health Regulations (IHR).
 
 ## Calculator Tool
-## This script is still in progress, but will eventually include a simple R script that allows users to:
+## This is a simple R script that allows users to:
 ##  - read in data from the data/ directory
 ##  - specify a set of user inputs and assumptions
 ##  - estimate yearly costs and generate simple visual graphics and outputs
@@ -40,6 +37,8 @@ library(openxlsx) ## to read in Excel files
 #############################################
 
 ## Read in data from the costing worksheet, one sheet at a time
+## below we are reading in some example files, you'l need to update these
+## to use your own files in the same format
 
 line_items <- read.xlsx("calculator-tool/jee3_costing_worksheet.xlsx",
                         sheet = "Line items (JEE 3)")

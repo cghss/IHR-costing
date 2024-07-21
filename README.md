@@ -9,4 +9,4 @@ This github repository contains data, analyses, and other key materials to suppo
 
 For prior published work, including work completed based on the first edition JEE, please see https://ghscosting.org/.
 
- **All work in this repository is currently in-progress, including Q/A and data validation. Please contact sde31@georgetown.edu with any questions or feedback. Given that data and tools are subject to change at any time during the ongoing Q/A process, please do not use these data for active research or operations without first checking in at the email address above.**
+Please contact sde31@georgetown.edu with any questions or feedback. 
