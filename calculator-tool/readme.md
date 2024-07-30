@@ -9,4 +9,4 @@ This directory includes a simple R script that allows users to:
 - specify a set of user inputs and assumptions
 - estimate yearly costs and generate simple visual graphics and outputs
 
-The calculator script will be designed to help calculate costs for one country at a time.
+The calculator script is designed to help calculate costs for one country at a time.
