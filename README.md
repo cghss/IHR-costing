@@ -1,7 +1,7 @@
 # IHR-costing
 The IHR Costing Tool helps users generate and review cost estimates to support practical planning for sustainable capacity development to prevent, detect, and respond to public health threats, as defined by the International Health Regulations (IHR).
 
-This github repository contains data, analyses, and other key materials to support ongoing work on the IHR costing tool, aligned to the third edition Joint External Evaluation (JEE).
+This github repository contains data, analyses, and other key materials to support ongoing work on the IHR costing tool, aligned to the third edition Joint External Evaluation (JEE). The file IHR Costing Overview.pdf contains a brief technically-oriented summary of the work that has been completed to date.
 
 * **data/:** the underlying datasets that power the IHR costing tool
 * **quality-checks/:** exploratory code used to review data and perform quality checks during data curation
